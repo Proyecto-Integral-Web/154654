@@ -1,19 +1,19 @@
 <template>
   <section>
     <h3>We are <strong>aroma</strong></h3>
-    <h6>Welcome Back, Please login in your account</h6>
+    <a class="subtitle">Welcome Back! please login in your account</a>
     <div class="col">
       <input
         type="email"
         name="email"
-        class="form-control"
+        class="form-control mb-3"
         placeholder="E-mail"
         v-model="user.email"
       >
       <input
         type="password"
         name="password"
-        class="form-control mb-2"
+        class="form-control mb-3"
         placeholder="******"
         v-model="user.password"
         @keypress.enter="login"
@@ -24,9 +24,9 @@
       <!--{{1+1}}-->
 
     </div>
-    <div class="form-group mb-2">
+    <div class="form-group mb-3">
       <div class="row">
-        <div class="col">
+        <!-- <div class="col">
           <div class="row">
             <div class="col-md-2">
               <input type="checkbox" />
@@ -36,10 +36,10 @@
             </div>
           </div>
 
-        </div>
-        <div class="col">
+        </div>-->
+        <!--<div class="col">
           <small>Forgot password?</small>
-        </div>
+        </div>-->
       </div>
     </div>
     <div class="form-group mb-2">
@@ -50,10 +50,14 @@
             @click="login"
           >Login</button>
         </div>
-        <div class="col">
-          <button class="btn btn-gray  btn-block  btn-light ">Sign Up</button>
-        </div>
+
       </div>
+    </div>
+    <div class="col">
+      <small>Already have an account?</small>
+    </div>
+    <div class="col">
+      <button class="btn btn-gray  btn-block  ">Sign Up</button>
     </div>
 
   </section>
@@ -101,15 +105,30 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 //Style, ubicamos el css relacionado a nuestros views y componentes
 <style lang="scss">
+strong {
+  color: #3d6946 !important;
+}
+.subtitle {
+  font-size: 10pt !important;
+  padding: 20px !important;
+}
 .btn-gray {
-  background: gray !important;
-  color: white !important;
+  background: transparent !important;
+  color: #3d6946 !important;
+  font-weight: bold !important;
+  font-size: 10pt !important;
 }
 
 .btn-black {
-  background: #001;
+  background: #000 !important;
+  border-radius: 30px !important;
+  border: solid transparent !important;
   &:hover {
-    background: rgb(71, 71, 71);
+    background: #3d6946 !important;
+  }
+
+  .form-control {
+    border-radius: 30px !important;
   }
 }
 </style>
