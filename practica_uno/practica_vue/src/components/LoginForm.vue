@@ -1,7 +1,11 @@
 <template>
   <section>
-    <h3>We are <strong>aroma</strong></h3>
-    <a class="subtitle">Welcome Back! please login in your account</a>
+    <h3 class="title">We are <strong>aroma</strong></h3>
+    <div class="col mb-3">
+      <a class="subtitle text-center">
+        Welcome Back! please login in your account
+      </a>
+    </div>
     <div class="col">
       <input
         type="email"
@@ -14,7 +18,7 @@
         type="password"
         name="password"
         class="form-control mb-3"
-        placeholder="******"
+        placeholder="********"
         v-model="user.password"
         @keypress.enter="login"
       >
@@ -53,11 +57,11 @@
 
       </div>
     </div>
-    <div class="col">
-      <small>Already have an account?</small>
+    <div class="col subtitle">
+      <small>Don't have an account?</small>
     </div>
     <div class="col">
-      <button class="btn btn-gray  btn-block  ">Sign Up</button>
+      <button class="btn btn-gray  sign-up">Sign Up</button>
     </div>
 
   </section>
@@ -108,9 +112,19 @@ export default {
 strong {
   color: #3d6946 !important;
 }
+.title {
+  font-family: montserrat !important;
+}
 .subtitle {
   font-size: 10pt !important;
-  padding: 20px !important;
+  font-family: montserrat !important;
+  text-align: center !important;
+}
+.sign-up {
+  font-family: montserrat !important;
+  &:hover {
+    color: black !important;
+  }
 }
 .btn-gray {
   background: transparent !important;
@@ -125,10 +139,6 @@ strong {
   border: solid transparent !important;
   &:hover {
     background: #3d6946 !important;
-  }
-
-  .form-control {
-    border-radius: 30px !important;
   }
 }
 </style>
