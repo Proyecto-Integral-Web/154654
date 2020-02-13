@@ -3,10 +3,24 @@
     <h3 class="title">We are <strong>aroma</strong></h3>
     <div class="col mb-3">
       <a class="subtitle text-center">
-        Welcome Back! please login in your account
+        Don't have an account? Register for free
       </a>
     </div>
     <div class="col">
+      <input
+        type="text"
+        name="name"
+        class="form-control mb-3"
+        placeholder="Name"
+        v-model="user.name"
+      >
+      <input
+        type="number"
+        name="Telephone"
+        class="form-control mb-3"
+        placeholder="Telephone"
+        v-model="user.telephone"
+      >
       <input
         type="email"
         name="email"
@@ -20,7 +34,7 @@
         class="form-control mb-3"
         placeholder="********"
         v-model="user.password"
-        @keypress.enter="login"
+        @keypress.enter="signup"
       >
 
       <!-- Handler templating -->
@@ -51,20 +65,20 @@
         <div class="col">
           <button
             class="btn btn_success btn-block btn-black btn-dark"
-            @click="login"
-          >Login</button>
+            @click="signup"
+          >Sign Up</button>
         </div>
 
       </div>
     </div>
     <div class="col subtitle">
-      <small>Don't have an account?</small>
+      <small>Already have an account?</small>
     </div>
     <div class="col">
       <button
-        class="btn btn-gray sign-up"
-        @click="signup"
-      >Sign Up</button>
+        class="btn btn-gray  sign-up"
+        @click="login"
+      >Login</button>
     </div>
 
   </section>
@@ -72,7 +86,7 @@
 
 <script lang="js">
 export default {
-  name: 'LoginForm',
+  name: 'SignUpForm',
   data () { // iteramos todas las variables y métodos que
     return {
       // sabemos que es una funcion porque tiene () y siempre va a regresarnos algo
@@ -93,21 +107,21 @@ export default {
     // this.login()
   },
   methods: { // declarar todas las funciones que se van a usar, en este caso Login
-    login () {
+    signup () {
       // Esta variable es de uso local en nuestro metodo
     /*  let user = {
         email: 'esto es local'
       } */
-      console.log('soy el login ')
+      console.log('soy el signup ')
       console.log(this.user.email)
       setTimeout(() => {
         // Luego de iniciar sesion nos envia a la pagina about
         this.$router.push({ name: 'about' })
       }, 1000)
     },
-    signup () {
+    login () {
       console.log('signup')
-      this.$router.push({ name: 'signup' })
+      this.$router.push({ name: 'login' })
     }
   }
 }
