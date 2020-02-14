@@ -92,11 +92,10 @@ export default {
     return {
       // sabemos que es una funcion porque tiene () y siempre va a regresarnos algo
       user: {
+        name: '',
+        telephone: '',
         email: 'mail@gmail.com',
-        password: '123'
-      },
-      userEmail: {
-        userPassword: ''
+        password: '1234568586'
       }
     }
   },
