@@ -85,14 +85,15 @@
 </template>
 
 <script lang="js">
+import Auth from '@/config/auth.js'
 export default {
   name: 'SignUpForm',
   data () { // iteramos todas las variables y métodos que
     return {
       // sabemos que es una funcion porque tiene () y siempre va a regresarnos algo
       user: {
-        email: '',
-        password: ''
+        email: 'mail@gmail.com',
+        password: '123'
       },
       userEmail: {
         userPassword: ''
@@ -103,6 +104,7 @@ export default {
     console.log('Estoy en created')
   },
   mounted () { // el lugar adecuado para ejecutar cualquier funcion preparatoria, como para checar si el usuario esta loggeado, la ubicación, etc.
+    Auth.signUp(this.user)
     console.log('Estoy en mounted')
     // this.login()
   },
