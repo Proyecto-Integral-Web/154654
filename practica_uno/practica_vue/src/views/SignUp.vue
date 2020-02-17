@@ -3,11 +3,11 @@
     <div class="p">
       <!--  Soy el signUp  -->
       <div class="row">
-        <div class="col-sm">
+        <div class="col-lg-6">
           <!-- Invocamos el componente para su visualizacion en nuestro View-->
           <SignUpForm class="login-form"></SignUpForm>
         </div>
-        <div class="col-sm">
+        <div class="col-lg-6 d-none d-lg-block">
           <div class="img">
             <table style="height: 100%; width:100%;">
               <tbody>

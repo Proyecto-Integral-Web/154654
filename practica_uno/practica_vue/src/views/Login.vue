@@ -3,7 +3,7 @@
     <div class="p">
       <!--  Soy el login  -->
       <div class="row">
-        <div class="col-sm">
+        <div class="col-lg-6 d-none d-lg-block">
           <div class="img">
             <table style="height: 100%; width:100%;">
               <tbody>
@@ -20,7 +20,7 @@
               class="img-fluid img-card"
             >-->
         </div>
-        <div class="col-sm">
+        <div class="col-lg-6">
           <!-- Invocamos el componente para su visualizacion en nuestro View-->
           <LoginForm class="login-form"></LoginForm>
         </div>

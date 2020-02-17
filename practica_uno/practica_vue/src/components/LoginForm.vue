@@ -24,7 +24,7 @@
       >
 
       <!-- Handler templating -->
-      {{user.password}}
+      <!--{{user.password}}-->
       <!--{{1+1}}-->
 
     </div>

@@ -1,6 +1,6 @@
 <template>
   <section>
-    <h3 class="title">We are <strong>aroma</strong></h3>
+    <h3 class="title">Register in <strong>aroma</strong></h3>
     <div class="col mb-3">
       <a class="subtitle text-center">
         Don't have an account? Register for free
@@ -38,7 +38,7 @@
       >
 
       <!-- Handler templating -->
-      {{user.password}}
+      <!--{{user.password}}-->
       <!--{{1+1}}-->
 
     </div>
@@ -94,8 +94,8 @@ export default {
       user: {
         name: '',
         telephone: '',
-        email: 'mail@gmail.com',
-        password: '1234568586'
+        email: '',
+        password: ''
       }
     }
   },
@@ -103,7 +103,6 @@ export default {
     console.log('Estoy en created')
   },
   mounted () { // el lugar adecuado para ejecutar cualquier funcion preparatoria, como para checar si el usuario esta loggeado, la ubicación, etc.
-    Auth.signUp(this.user)
     console.log('Estoy en mounted')
     // this.login()
   },
@@ -118,6 +117,7 @@ export default {
       setTimeout(() => {
         // Luego de iniciar sesion nos envia a la pagina about
         this.$router.push({ name: 'about' })
+        Auth.signUp(this.user)
       }, 1000)
     },
     login () {
