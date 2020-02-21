@@ -71,6 +71,7 @@
 </template>
 
 <script lang="js">
+import Auth from '@/config/auth.js'
 export default {
   name: 'LoginForm',
   data () { // iteramos todas las variables y métodos que
@@ -100,6 +101,8 @@ export default {
       } */
       console.log('soy el login ')
       console.log(this.user.email)
+      // Aqui llamo la funcion login de mi archivo auth.js
+      Auth.login(this.user)
       setTimeout(() => {
         // Luego de iniciar sesion nos envia a la pagina about
         this.$router.push({ name: 'about' })
