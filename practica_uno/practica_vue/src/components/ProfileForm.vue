@@ -57,6 +57,10 @@
             class="btn btn_success btn-block log-out"
             @click="logOut"
           ><small><strong>Log Out</strong></small></button>
+          <button
+            class="btn btn_success btn-block log-out"
+            @click="updateInfo"
+          ><small><strong>Update</strong></small></button>
         </div>
 
       </div>
@@ -67,22 +71,28 @@
 
 <script lang="js">
 import Auth from '@/config/auth.js'
+import Firebase from '@/config/_firebase.js'
 export default {
   name: 'SignUpForm',
   data () { // iteramos todas las variables y métodos que
     return {
       // sabemos que es una funcion porque tiene () y siempre va a regresarnos algo
       user: {
-        name: 'Ericka',
-        telephone: '6567977029',
-        email: 'erickasanchezc1998@gmail.com'
+        name: '',
+        telephone: '',
+        email: ''
       }
     }
   },
   created () {
     console.log('Estoy en created')
-    var user = Auth.currentUser
-    this.name = user.displayName
+    // var user = Auth.currentUser
+    // this.name = user.displayName
+
+    let usuario = Firebase.auth().currentUser
+    this.user.name = usuario.displayName
+    this.user.telephone = usuario.phoneNumber
+    this.user.email = usuario.email
   },
   mounted () { // el lugar adecuado para ejecutar cualquier funcion preparatoria, como para checar si el usuario esta loggeado, la ubicación, etc.
     console.log('Estoy en mounted')
@@ -91,6 +101,20 @@ export default {
   methods: {
     logOut () {
       return Auth.logOut()
+    },
+    updateInfo () {
+      let usuarioAcual = Firebase.auth().currentUser
+
+      usuarioAcual.updateProfile({
+        displayName: this.user.name,
+        phoneNumber: this.user.telephone,
+        email: this.user.email
+      }).then((result) => {
+        console.log(result)
+        return alert('Update')
+      }).catch((err) => {
+        console.table(err)
+      })
     }
   }
 }
