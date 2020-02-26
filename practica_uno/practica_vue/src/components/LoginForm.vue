@@ -103,10 +103,10 @@ export default {
       console.log(this.user.email)
       // Aqui llamo la funcion login de mi archivo auth.js
       Auth.login(this.user)
-      setTimeout(() => {
+      /* setTimeout(() => {
         // Luego de iniciar sesion nos envia a la pagina about
         this.$router.push({ name: 'about' })
-      }, 1000)
+      }, 1000) */
     },
     signup () {
       console.log('signup')

@@ -6,7 +6,7 @@ export default {
     fireApp.auth().signOut()
     router.push({ name: 'login' })
   },
-  checkUser () {
+  async checkUser () {
     let user = fireApp.auth().currentUser
     if (user) {
       return user
@@ -16,7 +16,7 @@ export default {
     fireApp.auth().signInWithEmailAndPassword(data.email, data.password).then(
       (result) => {
         console.log(result)
-        router.push({ name: 'about' })
+        router.push({ name: 'profile' })
       }
     ).catch((err) => {
       console.log(err)

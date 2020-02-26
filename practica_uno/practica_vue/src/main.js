@@ -10,15 +10,26 @@ import 'bootstrap/dist/css/bootstrap.css' // agregamos bootstrap
 Vue.config.productionTip = false
 
 // Metodo de comprobacion de permiso de acceso
-router.beforeEach((to, from, next) => {
+
+router.beforeEach(async (to, from, next) => {
   if (to.meta.auth) {
     console.log('Necesita permiso para entrar')
-    if (Auth.checkUser()) {
-      next()
+    // Traemos info del usuario actual
+    let user = await Auth.checkUser()
+    console.log(user)
+    // Comprobamos que si haya usuario
+    if (user == null) {
+      // Si no hay usuario lo mandamos al login
+      next({
+        name: 'login'
+      })
       return
     }
-    router.push({ name: 'login' })
-  }next()
+    // Si hay usuario ingresamos a la ruta
+    console.log('Usuario logeado')
+    next()
+  }
+  next()
 })
 
 new Vue({

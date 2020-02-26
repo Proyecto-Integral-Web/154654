@@ -27,6 +27,14 @@ const routes = [
     component: Home
   },
   {
+    path: '/profile',
+    name: 'profile',
+    component: () => import('../views/Profile.vue'),
+    meta: {
+      auth: true // Se utiliza para controlar
+    }
+  },
+  {
     path: '/about',
     name: 'about',
     // route level code-splitting
@@ -34,7 +42,7 @@ const routes = [
     // which is lazy-loaded when the route is visited.
     component: () => import('../views/About.vue'),
     meta: {
-      auth: true
+      auth: true // Se utiliza para controlar
     }
   }
 ]
