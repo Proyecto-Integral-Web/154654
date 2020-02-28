@@ -50,11 +50,12 @@
       <div
         class="alert alert-danger"
         role="alert"
+        id="alert-error"
       >
-        <strong>Oh snap!</strong> <a
+        <strong></strong> <a
           href="#"
           class="alert-link"
-        >Change a few things up</a> and try submitting again.
+        >E-mail or password are incorrect </a> Try again.
       </div>
       <div class="row">
         <div class="col">
@@ -114,7 +115,8 @@ export default {
       Auth.login(this.user).catch(error => {
         console.log('Estoy en LoginForm')
         console.log('Esto es un error:' + error.code, error.message)
-        alert('Esto es un error')
+        // alert('Esto es un error')
+        document.getElementById('alert-error').style.display = 'block'
       })
       /* setTimeout(() => {
         // Luego de iniciar sesion nos envia a la pagina about
@@ -134,6 +136,9 @@ export default {
 <style lang="scss">
 strong {
   color: #3d6946 !important;
+}
+#alert-error {
+  display: none;
 }
 .title {
   font-family: montserrat !important;

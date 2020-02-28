@@ -7,6 +7,7 @@
       </a>
     </div>
     <div class="col">
+
       <input
         type="text"
         name="name"
@@ -14,6 +15,7 @@
         placeholder="Name"
         v-model="user.name"
       >
+
       <input
         type="number"
         name="Telephone"
@@ -37,27 +39,41 @@
         @keypress.enter="signup"
       >
 
+      <div
+        class="alert-campos"
+        id="alert-campos"
+      >Todos los campos son obligatorios</div>
       <!-- Handler templating -->
       <!--{{user.password}}-->
       <!--{{1+1}}-->
 
     </div>
     <div class="form-group mb-3">
-      <div class="row">
-        <!-- <div class="col">
-          <div class="row">
-            <div class="col-md-2">
-              <input type="checkbox" />
-            </div>
-            <div class="col">
-              <small>Remember me</small>
-            </div>
-          </div>
+      <div
+        class="alert alert-warning"
+        id="alert-password"
+        role="alert"
+      >
+        <strong></strong> Weak Password!
+      </div>
+      <div
+        class="alert alert-warning"
+        id="alert-email"
+        role="alert"
+      >
+        <strong></strong> Type your email correctly!
+      </div>
 
-        </div>-->
-        <!--<div class="col">
-          <small>Forgot password?</small>
-        </div>-->
+      <div
+        class="alert alert-warning"
+        id="alert-email-in-use"
+        role="alert"
+      >
+        <strong></strong> Email already in use, try with another one
+      </div>
+
+      <div class="row">
+
       </div>
     </div>
     <div class="form-group mb-2">
@@ -114,11 +130,32 @@ export default {
       } */
       console.log('soy el signup ')
       console.log(this.user.email)
-      setTimeout(() => {
+
+      Auth.signUp(this.user).catch(errores => {
+        var errorCode = errores.code
+        // var errorMessage = errores.message
+        if (errorCode === 'auth/weak-password') {
+          document.getElementById('alert-password').style.display = 'block'
+        } else {
+          // alert(errorMessage)
+          document.getElementById('alert-password').style.display = 'none'
+        }
+        if (errorCode === 'auth/invalid-email') {
+          document.getElementById('alert-email').style.display = 'block'
+        } else {
+          document.getElementById('alert-email').style.display = 'none'
+        }
+        if (errorCode === 'auth/email-already-in-use') {
+          document.getElementById('alert-email-in-use').style.display = 'block'
+        } else {
+          document.getElementById('alert-email-in-use').style.display = 'none'
+        }
+      })
+      /* setTimeout(() => {
         // Luego de iniciar sesion nos envia a la pagina about
         this.$router.push({ name: 'login' })
         Auth.signUp(this.user)
-      }, 1000)
+      }, 1000) */
     },
     login () {
       console.log('signup')
@@ -133,6 +170,16 @@ export default {
 <style lang="scss">
 strong {
   color: #3d6946 !important;
+}
+#alert-password,
+#alert-email,
+#alert-email-in-use,
+#alert-campos {
+  display: none;
+}
+.alert-campos {
+  color: red;
+  font-size: 9pt;
 }
 .title {
   font-family: montserrat !important;

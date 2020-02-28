@@ -24,11 +24,14 @@ export default {
       return Promise.reject(err)
     })
   },
-  signUp (data) {
+  async signUp (data) {
     if (data.nombre === '' || data.email === '' || data.password === '') {
-      return alert('todos los campos son obligatorios')
+      // return alert('todos los campos son obligatorios')
+      document.getElementById('alert-campos').style.display = 'block'
+    } else {
+      document.getElementById('alert-campos').style.display = 'none'
     }
-    fireApp.auth().createUserWithEmailAndPassword(data.email, data.password)
+    await fireApp.auth().createUserWithEmailAndPassword(data.email, data.password)
       .then(result => {
         let newUser = {
           displayName: data.nombre,
@@ -40,6 +43,7 @@ export default {
         fireApp.auth().updateCurrentUser(newUser).catch(err => console.table(err))
       }).catch((err) => {
         console.table(err)
+        return Promise.reject(err)
       }) // esta funcion es asincrona
     console.log(data)
   }
