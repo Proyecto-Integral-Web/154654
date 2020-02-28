@@ -116,7 +116,7 @@ export default {
       console.log(this.user.email)
       setTimeout(() => {
         // Luego de iniciar sesion nos envia a la pagina about
-        this.$router.push({ name: 'about' })
+        this.$router.push({ name: 'login' })
         Auth.signUp(this.user)
       }, 1000)
     },

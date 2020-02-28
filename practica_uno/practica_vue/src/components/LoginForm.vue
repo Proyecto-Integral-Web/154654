@@ -47,6 +47,15 @@
       </div>
     </div>
     <div class="form-group mb-2">
+      <div
+        class="alert alert-danger"
+        role="alert"
+      >
+        <strong>Oh snap!</strong> <a
+          href="#"
+          class="alert-link"
+        >Change a few things up</a> and try submitting again.
+      </div>
       <div class="row">
         <div class="col">
           <button
@@ -102,7 +111,11 @@ export default {
       console.log('soy el login ')
       console.log(this.user.email)
       // Aqui llamo la funcion login de mi archivo auth.js
-      Auth.login(this.user)
+      Auth.login(this.user).catch(error => {
+        console.log('Estoy en LoginForm')
+        console.log('Esto es un error:' + error.code, error.message)
+        alert('Esto es un error')
+      })
       /* setTimeout(() => {
         // Luego de iniciar sesion nos envia a la pagina about
         this.$router.push({ name: 'about' })
