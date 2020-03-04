@@ -1,6 +1,7 @@
 <template>
   <section>
     <h3 class="title">We are <strong>aroma</strong></h3>
+
     <div class="col mb-3">
       <a class="subtitle text-center">
         Welcome Back! please login in your account
@@ -13,6 +14,7 @@
         class="form-control mb-3"
         placeholder="E-mail"
         v-model="user.email"
+        @keypress="showError=false"
       >
       <input
         type="password"
@@ -21,6 +23,7 @@
         placeholder="********"
         v-model="user.password"
         @keypress.enter="login"
+        @keypress="showError=false"
       >
 
       <!-- Handler templating -->
@@ -47,7 +50,7 @@
       </div>
     </div>
     <div class="form-group mb-2">
-      <div
+      <!--<div
         class="alert alert-danger"
         role="alert"
         id="alert-error"
@@ -56,7 +59,13 @@
           href="#"
           class="alert-link"
         >E-mail or password are incorrect </a> Try again.
-      </div>
+      </div>-->
+      <alerts-component
+        v-if="showError"
+        :message="errorMessage"
+        :code="errorCode"
+      >
+      </alerts-component>
       <div class="row">
         <div class="col">
           <button
@@ -82,11 +91,18 @@
 
 <script lang="js">
 import Auth from '@/config/auth.js'
+import AlertsComponent from './helpers/Alerts'
 export default {
   name: 'LoginForm',
+  components: {
+    AlertsComponent // Lo registramos como componente
+  },
   data () { // iteramos todas las variables y métodos que
     return {
       // sabemos que es una funcion porque tiene () y siempre va a regresarnos algo
+      showError: false,
+      errorMessage: '',
+      errorCode: '',
       user: {
         email: '',
         password: ''
@@ -116,12 +132,18 @@ export default {
         console.log('Estoy en LoginForm')
         console.log('Esto es un error:' + error.code, error.message)
         // alert('Esto es un error')
-        document.getElementById('alert-error').style.display = 'block'
+        // document.getElementById('alert-error').style.display = 'block'
+        this.showError = true
+        this.errorMessage = error.message
+        this.errorCode = error.code
       })
       /* setTimeout(() => {
         // Luego de iniciar sesion nos envia a la pagina about
         this.$router.push({ name: 'about' })
       }, 1000) */
+      /* setTimeout(() => {
+        this.showError = false
+      }, 700) */
     },
     signup () {
       console.log('signup')
