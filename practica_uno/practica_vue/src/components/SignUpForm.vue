@@ -49,28 +49,34 @@
 
     </div>
     <div class="form-group mb-3">
-      <div
+      <!--<div
         class="alert alert-warning"
         id="alert-password"
         role="alert"
       >
         <strong></strong> Weak Password!
-      </div>
-      <div
+      </div>-->
+      <!--<div
         class="alert alert-warning"
         id="alert-email"
         role="alert"
       >
         <strong></strong> Type your email correctly!
-      </div>
+      </div>-->
 
-      <div
+      <!--<div
         class="alert alert-warning"
         id="alert-email-in-use"
         role="alert"
       >
         <strong></strong> Email already in use, try with another one
-      </div>
+      </div>-->
+      <alerts-component
+        v-if="showError"
+        :message="errorMessage"
+        :code="errorCode"
+      >
+      </alerts-component>
 
       <div class="row">
 
@@ -102,11 +108,18 @@
 
 <script lang="js">
 import Auth from '@/config/auth.js'
+import AlertsComponent from './helpers/Alerts'
 export default {
   name: 'SignUpForm',
+  components: {
+    AlertsComponent
+  },
   data () { // iteramos todas las variables y métodos que
     return {
       // sabemos que es una funcion porque tiene () y siempre va a regresarnos algo
+      showError: false,
+      errorMessage: '',
+      errorCode: '',
       user: {
         name: '',
         telephone: '',
@@ -132,14 +145,15 @@ export default {
       console.log(this.user.email)
 
       Auth.signUp(this.user).catch(errores => {
-        var errorCode = errores.code
+        // var errorCode = errores.code
         // var errorMessage = errores.message
-        if (errorCode === 'auth/weak-password') {
+        /* if (errorCode === 'auth/weak-password') {
           document.getElementById('alert-password').style.display = 'block'
         } else {
           // alert(errorMessage)
           document.getElementById('alert-password').style.display = 'none'
-        }
+        } */
+        /*
         if (errorCode === 'auth/invalid-email') {
           document.getElementById('alert-email').style.display = 'block'
         } else {
@@ -149,7 +163,10 @@ export default {
           document.getElementById('alert-email-in-use').style.display = 'block'
         } else {
           document.getElementById('alert-email-in-use').style.display = 'none'
-        }
+        } */
+        this.showError = true
+        this.errorMessage = errores.message
+        this.errorCode = errores.code
       })
       /* setTimeout(() => {
         // Luego de iniciar sesion nos envia a la pagina about
