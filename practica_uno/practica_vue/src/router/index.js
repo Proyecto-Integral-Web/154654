@@ -10,12 +10,6 @@ Vue.use(VueRouter)
 const routes = [
   // Agregamos nueva ruta
   {
-    // rutas dinamicas, donde no_partida puede ser diferente para cargar dicha partida
-    path: '/juego-1/:no_partida',
-    name: 'partida', // asignamos nombre, debe ser único y original
-    component: Partida // Declaramos componente
-  },
-  {
     path: '/',
     name: 'login', // asignamos nombre, debe ser único y original
     component: Login, // Declaramos componente
@@ -51,6 +45,12 @@ const routes = [
     meta: {
       auth: true // Se utiliza para controlar
     }
+  },
+  {
+    // rutas dinamicas, donde no_partida puede ser diferente para cargar dicha partida
+    path: '/juego-1/:no_partida',
+    name: 'partida', // asignamos nombre, debe ser único y original
+    component: Partida // Declaramos componente
   }
 ]
 
