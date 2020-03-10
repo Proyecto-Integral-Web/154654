@@ -5,8 +5,12 @@ import router from './router'
 import store from './store'
 import Auth from './config/auth'
 import 'animate.css'
+/**/
+import { firestorePlugin } from 'vuefire'
 // Librerias de usuario
-import 'bootstrap/dist/css/bootstrap.css' // agregamos bootstrap
+import 'bootstrap/dist/css/bootstrap.css'
+
+Vue.use(firestorePlugin) // agregamos bootstrap
 
 Vue.config.productionTip = false
 
