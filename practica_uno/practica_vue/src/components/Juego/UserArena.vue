@@ -51,10 +51,10 @@ export default {
 <style lang="scss">
 .tarjetas {
   background: white;
-  border-radius: 15px;
+  border-radius: 50px;
   color: white;
   font-family: montserrat;
-  border: solid #ffbc1f 10px;
+  border: solid #ffbc1f 15px;
   .usuario {
     color: #667fed;
     font-weight: bold;
