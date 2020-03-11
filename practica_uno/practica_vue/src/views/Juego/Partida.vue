@@ -4,7 +4,7 @@
       <div class="row">
         <div class="col ">
           <button
-            class="btn btn-success"
+            class="btn btn-black"
             @click="crearPartida"
           >
             Nueva Partida
@@ -15,8 +15,9 @@
         <div class="col col-sm-6 offset-3">
         </div>
       </div>
+      <!--<h3>{{$route.params.no_partida.replace('-',' ')}}</h3>-->
       <div class="row">
-        <h3>{{$route.params.no_partida}}</h3>
+
         <div class="col col-sm-12 col-lg-6 p-2">
           <user-arena
             @opcion="getOpcion"
@@ -24,9 +25,10 @@
           ></user-arena>
         </div>
         <div class="col col-sm-12 col-lg-6 p-2">
-          <user-arena :userOpcion="partida.usuario_1?partida.usuario_2:''"></user-arena>
+          <user-arena :userOpcion="partida.usuario_1!=''?partida.usuario_2:''"></user-arena>
         </div>
       </div>
+      <b>{{partida}}</b>
     </div>
   </section>
 </template>
@@ -54,22 +56,22 @@ export default {
     }
   },
   firestore: {
-    partida: fireApp.firestore().collection('juego-1')
+    partidas: fireApp.firestore().collection('juego-1')
   },
   // Helper para asignar objetos o variables que necesitan ser detectados en sus cambios para ejecutar metodos
-  key: {
+  /* key: {
     deep: true,
     immediate: true,
     handler: function (val, oldVal) {
 
     }
-  },
+  }, */
   watch: {
     '$route.params': {
       deep: true,
       immediate: true,
       handler (value) {
-        this.$bind('user', users.doc(value.no_partida))
+        this.$bind('partida', partida.doc(value.no_partida))
       }
     }
   },
@@ -78,8 +80,8 @@ export default {
     crearPartida () {
       // Escribe en la base de datos
       fireApp.firestore().collection('juego-1').doc('partida-2').set({
-        'usuario-1': '',
-        'usuario-2': '',
+        'usuario_1': '',
+        'usuario_2': '',
         'ganador': ''
 
       })
@@ -92,7 +94,7 @@ export default {
     },
     getOpcion (opcion) {
       fireApp.firestore().collection('juego-1').doc(this.$route.params.no_partida).update({
-
+        'usuario_1': opcion
       })
     }
   }
@@ -101,5 +103,11 @@ export default {
 <style lang="scss">
 .partida {
   background-image: url(../../assets/bg3.jpg);
+}
+.btn-black {
+  color: white !important;
+}
+b {
+  color: white;
 }
 </style>

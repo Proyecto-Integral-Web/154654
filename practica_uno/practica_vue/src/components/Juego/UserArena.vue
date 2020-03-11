@@ -3,11 +3,11 @@
     <div class="tarjetas p-5">
       <div class="container-fluid pb-5">
         <div class="row">
-          <h6 class="mx-auto usuario">USUARIO</h6>
+          <h4 class="mx-auto usuario">Usuario</h4>
         </div>
         <div class="row">
           <div class="col-3 mx-auto">
-            <h1>{{options[user_opcion]}}</h1>
+            <h1>{{options[userOpcion]}}</h1>
           </div>
         </div>
         <div class="row">
@@ -52,12 +52,12 @@ export default {
 <style lang="scss">
 .tarjetas {
   background: white;
-  border-radius: 50px;
+  border-radius: 20px;
   color: white;
-  font-family: montserrat;
-  border: solid #ffbc1f 15px;
+  font-family: KG Summer Storm Smooth;
+  border: solid #ffbc1f 10px;
   .usuario {
-    color: #667fed;
+    color: black;
     font-weight: bold;
   }
 }
