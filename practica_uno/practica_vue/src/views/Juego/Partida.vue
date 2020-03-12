@@ -22,10 +22,14 @@
           <user-arena
             @opcion="getOpcion"
             :userOpcion="partida.usuario_1"
+            :displayName="!user.displayName?partida.names[0]:user.displayName"
           ></user-arena>
         </div>
         <div class="col col-sm-12 col-lg-6 p-2">
-          <user-arena :userOpcion="partida.usuario_1!=''?partida.usuario_2:''"></user-arena>
+          <user-arena
+            :displauName="!partida.names[1]"
+            :userOpcion="partida.usuario_1!=''?partida.usuario_2:''"
+          ></user-arena>
         </div>
       </div>
       <b>{{partida}}</b>
@@ -35,6 +39,7 @@
 <script lang="js">
 import UserArena from '@/components/Juego/UserArena'
 import fireApp from '../../config/_firebase.js'
+import Auth from '@/config/auth.js'
 
 const partida = fireApp.firestore().collection('juego-1')
 
@@ -77,12 +82,33 @@ export default {
   },
   methods: {
     // Metodo para generar nueva partida
+    /* obtenerUsuarios (const {propertyName} = objectToDestruct;) {
+      let cityRef = db.collection('cities').doc('SF')
+      let getDoc = cityRef.get()
+        .then(doc => {
+          if (!doc.exists) {
+            console.log('No such document!')
+          } else {
+            console.log('Document data:', doc.data())
+          }
+        })
+        .catch(err => {
+          console.log('Error getting document', err)
+        })
+      // [END get_document]
+
+      return getDoc
+    }, */
     crearPartida () {
+      let user = Auth.getUser()
+      let uid = user.uid
       // Escribe en la base de datos
-      fireApp.firestore().collection('juego-1').doc('partida-2').set({
-        'usuario_1': '',
-        'usuario_2': '',
-        'ganador': ''
+      fireApp.firestore().collection('juego-1').add({
+        participantes: [uid],
+        names: [user.displayName],
+        usuario_1: '',
+        usuario_2: '',
+        ganador: ''
 
       })
     },
@@ -93,6 +119,20 @@ export default {
       })
     },
     getOpcion (opcion) {
+      let participantes = []
+
+      participantes = this.partida.participantes
+      console.log(participantes.indexOf(this.user.uid))
+      let data = {}
+      if (participantes.indexOf(this.user.uid) === 0) {
+        data = {
+          'usuario_1': opcion
+        }
+      } else {
+        data = {
+          'usuario_2': opcion
+        }
+      }
       fireApp.firestore().collection('juego-1').doc(this.$route.params.no_partida).update({
         'usuario_1': opcion
       })

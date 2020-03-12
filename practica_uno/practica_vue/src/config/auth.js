@@ -46,5 +46,8 @@ export default {
         return Promise.reject(err)
       }) // esta funcion es asincrona
     console.log(data)
+  },
+  getUser () {
+    return fireApp.auth().currentUser
   }
 }
