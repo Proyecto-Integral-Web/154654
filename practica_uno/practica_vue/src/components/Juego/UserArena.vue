@@ -3,7 +3,7 @@
     <div class="tarjetas p-5">
       <div class="container-fluid pb-5">
         <div class="row">
-          <h4 class="mx-auto usuario">Usuario</h4>
+          <h4 class="mx-auto usuario">{{displayName}}</h4>
         </div>
         <div class="row">
           <div class="col-3 mx-auto">
@@ -32,7 +32,7 @@
 <script lang="js">
 export default {
   name: 'UserArena',
-  props: ['userOpcion'],
+  props: ['userOpcion', 'displayName'],
   data () {
     return {
       options: {

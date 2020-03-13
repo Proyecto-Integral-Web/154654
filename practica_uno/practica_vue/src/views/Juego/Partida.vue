@@ -20,15 +20,23 @@
 
         <div class="col col-sm-12 col-lg-6 p-2">
           <user-arena
-            @opcion="getOpcion"
+            @opcion="partida.participantes[0] === user.uid?getOpcion:''"
             :userOpcion="partida.usuario_1"
-            :displayName="!user.displayName?partida.names[0]:user.displayName"
+            :displayName="!user.displayName?partida.names[0]!== user.displayName?partida.names[0]:'':user.displayName"
           ></user-arena>
         </div>
         <div class="col col-sm-12 col-lg-6 p-2">
+          <button
+            v-if="!partida.names[1]"
+            class="btn btn-outline-primary"
+            @click="retar"
+          >
+            👾
+          </button>
           <user-arena
-            :displauName="!partida.names[1]"
+            :displayName="!partida.names[1]"
             :userOpcion="partida.usuario_1!=''?partida.usuario_2:''"
+            @opcion="partida.participantes[1] === user.uid?getOpcion:''"
           ></user-arena>
         </div>
       </div>
@@ -39,7 +47,7 @@
 <script lang="js">
 import UserArena from '@/components/Juego/UserArena'
 import fireApp from '../../config/_firebase.js'
-import Auth from '@/config/auth.js'
+import Auth from '@/config/auth'
 
 const partida = fireApp.firestore().collection('juego-1')
 
@@ -51,13 +59,15 @@ export default {
   beforeRouteEnter (to, from, next) {
     next(vm => {
       // vm.obtenerPartida(to.params.no_partida)
+      vm.user = Auth.getUser()
       vm.$bind('partida', partida.doc(to.params.no_partida))
     })
   },
   data () {
     return {
       partida: {},
-      partidas: []
+      partidas: [],
+      user: {}
     }
   },
   firestore: {
@@ -76,9 +86,13 @@ export default {
       deep: true,
       immediate: true,
       handler (value) {
+        this.user = Auth.getUser()
         this.$bind('partida', partida.doc(value.no_partida))
       }
     }
+  },
+  mounted () {
+    this.user = Auth.getUser()
   },
   methods: {
     // Metodo para generar nueva partida
@@ -100,12 +114,12 @@ export default {
       return getDoc
     }, */
     crearPartida () {
-      let user = Auth.getUser()
-      let uid = user.uid
+      this.user = Auth.getUser()
+      let uid = this.user.uid
       // Escribe en la base de datos
       fireApp.firestore().collection('juego-1').add({
         participantes: [uid],
-        names: [user.displayName],
+        names: [this.user.displayName == null ? 'Usuario 1' : this.user.displayName],
         usuario_1: '',
         usuario_2: '',
         ganador: ''
@@ -118,12 +132,20 @@ export default {
         console.log(result.data())
       })
     },
+    retar () {
+      this.user = Auth.getUser()
+      // eslint-disable-next-line no-unused-vars
+      let uid = this.user.uid
+      // *Escribe en la base de datos.
+      this.partida.names.push(this.user.displayName == null ? 'Usuario' : this.user.displayName)
+      this.partida.participantes.push(this.user.uid)
+      fireApp.firestore().collection('juego-1').doc(this.$route.params.no_partida).update(this.partida)
+    },
     getOpcion (opcion) {
-      let participantes = []
-
-      participantes = this.partida.participantes
+      let participantes = this.partida.participantes
       console.log(participantes.indexOf(this.user.uid))
       let data = {}
+
       if (participantes.indexOf(this.user.uid) === 0) {
         data = {
           'usuario_1': opcion
@@ -133,9 +155,7 @@ export default {
           'usuario_2': opcion
         }
       }
-      fireApp.firestore().collection('juego-1').doc(this.$route.params.no_partida).update({
-        'usuario_1': opcion
-      })
+      fireApp.firestore().collection('juego-1').doc(this.$route.params.no_partida).update(data)
     }
   }
 }
