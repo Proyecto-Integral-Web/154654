@@ -6,7 +6,8 @@
         :to="{
         name:'about'}"
         :class="$route.name=='about'?'btn':''"
-      >About</router-link>
+      >About</router-link> |
+      <router-link to="/juego-1/partida-1">Juego</router-link>
     </div>
     <router-view />
   </div>
