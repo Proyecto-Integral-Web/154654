@@ -58,10 +58,11 @@ export default {
     UserArena
   },
   beforeRouteEnter (to, from, next) {
-    next(vm => {
+    next(async vm => {
       // vm.obtenerPartida(to.params.no_partida)
-      vm.user = Auth.getUser()
-      vm.crearPartida()
+      // vm.user = Auth.getUser()
+      // vm.crearPartida()
+      vm.$bind('user', Auth.getUser())
       vm.$bind('partida', partida.doc(to.params.no_partida))
     })
   },
@@ -88,13 +89,13 @@ export default {
       deep: true,
       immediate: true,
       handler (value) {
-        this.user = Auth.getUser()
+        this.$bind('user', Auth.getUser())
         this.$bind('partida', partida.doc(value.no_partida))
       }
     }
   },
   mounted () {
-    this.user = Auth.getUser()
+    this.$bind('user', Auth.getUser())
   },
   methods: {
     // Metodo para generar nueva partida
