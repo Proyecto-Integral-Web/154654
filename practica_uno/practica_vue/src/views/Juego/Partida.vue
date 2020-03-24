@@ -122,15 +122,15 @@ export default {
       fireApp.firestore().collection('juego-1').add({
         participantes: [uid],
         name: [this.user.displayName == null ? 'Usuario 1' : this.user.displayName],
-        'usuario_1': '',
-        'usuario_2': '',
-        'ganador': ''
+        usuario_1: '',
+        usuario_2: '',
+        ganador: ''
 
       })
     },
     //* Cargar los datos de la partida del firestore. El ID de la partida se obtiene del parametro de la ruta *//
     obtenerPartida (partida) {
-      fireApp.firestore().collection('juego-1').doc(partida).get().then((result) => {
+      fireApp.firestore().collection('juego-1').doc(this.partida).get().then((result) => {
         console.log(result.data())
       })
     },
