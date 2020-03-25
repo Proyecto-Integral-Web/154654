@@ -4,6 +4,7 @@ import Home from '../views/Home.vue'
 import Login from '../views/Login.vue'
 import SignUp from '../views/SignUp.vue'
 import Partida from '../views/Juego/Partida.vue'
+import Marcador from '../views/Juego/Marcador.vue'
 
 Vue.use(VueRouter)
 
@@ -51,6 +52,11 @@ const routes = [
     path: '/juego-1/:no_partida',
     name: 'partida', // asignamos nombre, debe ser único y original
     component: Partida // Declaramos componente
+  },
+  {
+    path: '/marcador',
+    name: 'marcador',
+    component: Marcador
   }
 ]
 
