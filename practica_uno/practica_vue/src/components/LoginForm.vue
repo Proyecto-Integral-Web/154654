@@ -1,9 +1,9 @@
 <template>
   <section>
-    <h3 class="title">We are <strong>aroma</strong></h3>
+    <h3 class="title"><small>Sign In </small><br><strong>passionfruits</strong></h3>
 
     <div class="col mb-3">
-      <a class="subtitle text-center">
+      <a class="subtitle text-center text-light">
         Welcome Back! please login in your account
       </a>
     </div>
@@ -157,7 +157,7 @@ export default {
 //Style, ubicamos el css relacionado a nuestros views y componentes
 <style lang="scss">
 strong {
-  color: #3d6946 !important;
+  color: orange !important;
 }
 #alert-error {
   display: none;

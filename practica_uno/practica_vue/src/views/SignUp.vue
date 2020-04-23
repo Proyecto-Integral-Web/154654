@@ -37,14 +37,14 @@ export default {
 .img {
   height: 100%;
   border-radius: 30px !important;
-  background-image: url(../assets/bg.jpg);
+  background-image: url(../assets/fr1.gif);
   background-size: cover;
   text-align: center;
 }
 .login-form {
   padding: 80px;
   border-radius: 20px;
-  background-color: whitesmoke;
+  background-color: black;
 }
 td {
   color: white;

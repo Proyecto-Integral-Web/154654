@@ -58,11 +58,11 @@ export default {
     UserArena
   },
   beforeRouteEnter (to, from, next) {
-    next(async vm => {
+    next(vm => {
       // vm.obtenerPartida(to.params.no_partida)
-      // vm.user = Auth.getUser()
-      // vm.crearPartida()
-      vm.$bind('user', Auth.getUser())
+      vm.user = Auth.getUser()
+      vm.crearPartida()
+      // vm.$bind('user', Auth.getUser())
       vm.$bind('partida', partida.doc(to.params.no_partida))
     })
   },
@@ -89,13 +89,15 @@ export default {
       deep: true,
       immediate: true,
       handler (value) {
-        this.$bind('user', Auth.getUser())
+        this.user = Auth.getUser()
+        // this.$bind('user', Auth.getUser())
         this.$bind('partida', partida.doc(value.no_partida))
       }
     }
   },
   mounted () {
-    this.$bind('user', Auth.getUser())
+    this.user = Auth.getUser()
+    // this.$bind('user', Auth.getUser())
   },
   methods: {
     // Metodo para generar nueva partida
@@ -168,7 +170,7 @@ export default {
 </script>
 <style lang="scss">
 .partida {
-  background-image: url(../../assets/bg3.jpg);
+  background-image: url(../../assets/vg3.jpg);
 }
 .btn-black {
   color: white !important;

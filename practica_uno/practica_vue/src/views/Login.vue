@@ -43,7 +43,7 @@ export default {
 .img {
   height: 100%;
   border-radius: 30px !important;
-  background-image: url(../assets/bg.jpg);
+  background-image: url(../assets/fr1.jpg);
   background-size: cover;
   text-align: center;
 }

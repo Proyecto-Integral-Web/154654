@@ -30,7 +30,7 @@ export default {
   background: white;
   border-radius: 20px;
   color: white;
-  font-family: KG Summer Storm Smooth;
+  font-family: Lexend Giga;
   border: solid #ffbc1f 10px;
   .usuario {
     color: black;

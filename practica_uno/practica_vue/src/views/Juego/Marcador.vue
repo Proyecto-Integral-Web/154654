@@ -42,10 +42,10 @@ export default {
 <style lang="scss">
 .title {
   color: white;
-  font-family: KG Summer Storm Smooth !important;
+  font-family: montserrat !important;
 }
 .marcador {
-  background-image: url(../../assets/bg.png);
+  background-image: url(../../assets/fr1.jpg);
 }
 .btn-black {
   color: white !important;

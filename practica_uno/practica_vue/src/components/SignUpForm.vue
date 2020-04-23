@@ -1,6 +1,6 @@
 <template>
   <section>
-    <h3 class="title">Register in <strong>aroma</strong></h3>
+    <h3 class="title"><small>Register in </small><strong>passionfruits.</strong></h3>
     <div class="col mb-3">
       <a class="subtitle text-center">
         Don't have an account? Register for free
@@ -186,7 +186,7 @@ export default {
 //Style, ubicamos el css relacionado a nuestros views y componentes
 <style lang="scss">
 strong {
-  color: #3d6946 !important;
+  color: oran !important;
 }
 #alert-password,
 #alert-email,
@@ -205,26 +205,27 @@ strong {
   font-size: 10pt !important;
   font-family: montserrat !important;
   text-align: center !important;
+  color: #e6e6e6;
 }
 .sign-up {
   font-family: montserrat !important;
   &:hover {
-    color: black !important;
+    color: white !important;
   }
 }
 .btn-gray {
   background: transparent !important;
-  color: #3d6946 !important;
+  color: #95b2e7 !important;
   font-weight: bold !important;
   font-size: 10pt !important;
 }
 
 .btn-black {
-  background: #000 !important;
+  background: #9bb3cf !important;
   border-radius: 30px !important;
   border: solid transparent !important;
   &:hover {
-    background: #3d6946 !important;
+    background: #6d8dc9 !important;
   }
 }
 </style>
