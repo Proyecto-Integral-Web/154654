@@ -15,20 +15,13 @@
         placeholder="Name"
         v-model="user.name"
       >
-
-      <input
-        type="number"
-        name="Telephone"
-        class="form-control mb-3"
-        placeholder="Telephone"
-        v-model="user.telephone"
-      >
       <input
         type="email"
         name="email"
         class="form-control mb-3"
         placeholder="E-mail"
         v-model="user.email"
+        @keypress="showError = false"
       >
       <input
         type="password"
@@ -38,39 +31,15 @@
         v-model="user.password"
         @keypress.enter="signup"
       >
-
       <div
         class="alert-campos"
         id="alert-campos"
       >Todos los campos son obligatorios</div>
-      <!-- Handler templating -->
-      <!--{{user.password}}-->
-      <!--{{1+1}}-->
 
     </div>
-    <div class="form-group mb-3">
-      <!--<div
-        class="alert alert-warning"
-        id="alert-password"
-        role="alert"
-      >
-        <strong></strong> Weak Password!
-      </div>-->
-      <!--<div
-        class="alert alert-warning"
-        id="alert-email"
-        role="alert"
-      >
-        <strong></strong> Type your email correctly!
-      </div>-->
 
-      <!--<div
-        class="alert alert-warning"
-        id="alert-email-in-use"
-        role="alert"
-      >
-        <strong></strong> Email already in use, try with another one
-      </div>-->
+    <div class="form-group mb-3">
+
       <alerts-component
         v-if="showError"
         :message="errorMessage"
@@ -94,21 +63,21 @@
       </div>
     </div>
     <div class="col subtitle">
-      <small>Already have an account?</small>
+
     </div>
     <div class="col">
       <button
         class="btn btn-gray  sign-up"
         @click="login"
-      >Login</button>
+      > <small>Already have an account?</small></button>
     </div>
-
   </section>
 </template>
 
 <script lang="js">
 import Auth from '@/config/auth.js'
 import AlertsComponent from './helpers/Alerts'
+import Firebase from '@/config/_firebase.js'
 export default {
   name: 'SignUpForm',
   components: {
@@ -136,43 +105,43 @@ export default {
     // this.login()
   },
   methods: { // declarar todas las funciones que se van a usar, en este caso Login
+    updateProfile () {
+      let userU = Firebase.auth().currentUser
+
+      userU.updateProfile({
+        displayName: this.user.name
+
+      }).then((result) => {
+        console.log(result)
+      }).catch((error) => {
+        console.table(error)
+      })
+    },
     signup () {
       // Esta variable es de uso local en nuestro metodo
     /*  let user = {
         email: 'esto es local'
       } */
-      console.log('soy el signup ')
+      console.log('soy el signup')
       console.log(this.user.email)
 
       Auth.signUp(this.user).catch(errores => {
-        // var errorCode = errores.code
-        // var errorMessage = errores.message
-        /* if (errorCode === 'auth/weak-password') {
-          document.getElementById('alert-password').style.display = 'block'
-        } else {
-          // alert(errorMessage)
-          document.getElementById('alert-password').style.display = 'none'
-        } */
-        /*
-        if (errorCode === 'auth/invalid-email') {
-          document.getElementById('alert-email').style.display = 'block'
-        } else {
-          document.getElementById('alert-email').style.display = 'none'
-        }
-        if (errorCode === 'auth/email-already-in-use') {
-          document.getElementById('alert-email-in-use').style.display = 'block'
-        } else {
-          document.getElementById('alert-email-in-use').style.display = 'none'
-        } */
         this.showError = true
         this.errorMessage = errores.message
         this.errorCode = errores.code
       })
-      /* setTimeout(() => {
-        // Luego de iniciar sesion nos envia a la pagina about
-        this.$router.push({ name: 'login' })
-        Auth.signUp(this.user)
-      }, 1000) */
+      setTimeout(() => {
+        let userU = Firebase.auth().currentUser
+
+        userU.updateProfile({
+          displayName: this.user.name
+
+        }).then((result) => {
+          console.log(result)
+        }).catch((error) => {
+          console.table(error)
+        })
+      }, 1000)// Logica de hugo para obtener el nombre de la base de datos
     },
     login () {
       console.log('signup')

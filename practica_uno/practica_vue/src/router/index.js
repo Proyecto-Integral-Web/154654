@@ -5,6 +5,7 @@ import Login from '../views/Login.vue'
 import SignUp from '../views/SignUp.vue'
 import Partida from '../views/Juego/Partida.vue'
 import Marcador from '../views/Juego/Marcador.vue'
+import Profile from '../views/Profile.vue'
 
 Vue.use(VueRouter)
 
@@ -15,7 +16,7 @@ const routes = [
     name: 'login', // asignamos nombre, debe ser único y original
     component: Login, // Declaramos componente
     meta: {
-      authorization: false
+      auth: false
     }
   },
   {
@@ -31,7 +32,7 @@ const routes = [
   {
     path: '/profile',
     name: 'profile',
-    component: () => import('../views/Profile.vue'),
+    component: Profile,
     meta: {
       auth: true // Se utiliza para controlar
     }

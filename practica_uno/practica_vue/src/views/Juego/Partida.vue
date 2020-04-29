@@ -92,6 +92,7 @@ export default {
         this.user = Auth.getUser()
         // this.$bind('user', Auth.getUser())
         this.$bind('partida', partida.doc(value.no_partida))
+        console.log(value)
       }
     }
   },
