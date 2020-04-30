@@ -6,6 +6,7 @@ import SignUp from '../views/SignUp.vue'
 import Partida from '../views/Juego/Partida.vue'
 import Marcador from '../views/Juego/Marcador.vue'
 import Profile from '../views/Profile.vue'
+import Partidas from '../views/Juego/Partidas.vue'
 
 Vue.use(VueRouter)
 
@@ -53,6 +54,12 @@ const routes = [
     path: '/juego-1/:no_partida',
     name: 'partida', // asignamos nombre, debe ser único y original
     component: Partida // Declaramos componente
+  },
+  {
+    // rutas dinamicas, donde no_partida puede ser diferente para cargar dicha partida
+    path: '/partidas',
+    name: 'partidas', // asignamos nombre, debe ser único y original
+    component: Partidas // Declaramos componente
   },
   {
     path: '/marcador',

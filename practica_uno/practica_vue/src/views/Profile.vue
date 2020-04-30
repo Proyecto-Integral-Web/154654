@@ -6,7 +6,8 @@
           <ProfileForm class="login-form"></ProfileForm>
         </div>
         <div class="col-lg-8 d-none d-lg-block">
-          <div class="content">
+          <Ronda class=""></Ronda>
+          <!--<div class="content">
             <img
               style="width: 200px; height: 200px;"
               src="../assets/1.jpg"
@@ -38,7 +39,7 @@
               class="rounded float-left img-fluid m-3"
             >
 
-          </div>
+          </div>-->
         </div>
       </div>
     </div>
@@ -47,14 +48,17 @@
 
 <script lang="js">
 import ProfileForm from '@/components/ProfileForm'
+import Ronda from '@/components/Juego/Ronda'
 export default {
   name: 'Profile',
   components: {
-    ProfileForm
+    ProfileForm,
+    Ronda
   },
   methods: {
 
   }
+
 }
 </script>
 
