@@ -74,10 +74,11 @@ import Firebase from '@/config/_firebase.js'
 import AlertsComponent from '@/components/helpers/Alerts'
 
 export default {
-  name: 'SignUpForm',
+  name: 'ProfileForm',
   component: { AlertsComponent },
   data () { // iteramos todas las variables y métodos que
     return {
+      usuario: Auth.checkUser(),
       showError: false,
       errorMessage: '',
       errorCode: '',
@@ -100,12 +101,16 @@ export default {
   },
   mounted () { // el lugar adecuado para ejecutar cualquier funcion preparatoria, como para checar si el usuario esta loggeado, la ubicación, etc.
     console.log('Estoy en mounted')
+    this.usuario = Auth.checkUser()
     // this.login()
   },
   methods: {
     name: 'profile',
     logOut () {
       return Auth.logOut()
+    },
+    login () {
+      Auth.login(this.usuario)
     },
     updateInfo () {
       let usuarioAcual = Firebase.auth().currentUser

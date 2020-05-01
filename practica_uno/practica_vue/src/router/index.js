@@ -5,7 +5,6 @@ import Login from '../views/Login.vue'
 import SignUp from '../views/SignUp.vue'
 import Partida from '../views/Juego/Partida.vue'
 import Marcador from '../views/Juego/Marcador.vue'
-import Profile from '../views/Profile.vue'
 import Partidas from '../views/Juego/Partidas.vue'
 
 Vue.use(VueRouter)
@@ -33,7 +32,7 @@ const routes = [
   {
     path: '/profile',
     name: 'profile',
-    component: Profile,
+    component: () => import('../views/Profile.vue'),
     meta: {
       auth: true // Se utiliza para controlar
     }
