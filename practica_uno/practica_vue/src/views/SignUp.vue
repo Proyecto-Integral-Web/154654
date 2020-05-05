@@ -3,16 +3,19 @@
     <div class="p">
       <!--  Soy el signUp  -->
       <div class="row">
-        <div class="col-lg-6">
+        <div class="col-lg-6 bg-dark">
           <!-- Invocamos el componente para su visualizacion en nuestro View-->
           <SignUpForm class="login-form"></SignUpForm>
         </div>
-        <div class="col-lg-6 d-none d-lg-block">
+        <div class="col-lg-6 d-none d-lg-block bg-light">
           <div class="img">
-            <table style="height: 100%; width:100%;">
+            <table
+              class="signup"
+              style="height: 100%; width:100%;"
+            >
               <tbody>
                 <tr>
-                  <td class="text-center">Sign Up</td>
+                  <td class="text-center"></td>
                 </tr>
               </tbody>
             </table>
@@ -29,28 +32,12 @@ export default {
   name: 'signup',
   components: {
     SignUpForm
+  },
+  beforeCreate: function () {
+    document.body.className = 'signup'
   }
 }
 </script>
 
 <style lang="scss">
-.img {
-  height: 100%;
-  border-radius: 30px !important;
-  background-image: url(../assets/fr1.gif);
-  background-size: cover;
-  text-align: center;
-}
-.login-form {
-  padding: 80px;
-  border-radius: 20px;
-  background-color: black;
-}
-td {
-  color: white;
-  font-family: montserrat;
-  font-size: 25pt;
-  font-weight: bold;
-  opacity: 50%;
-}
 </style>
