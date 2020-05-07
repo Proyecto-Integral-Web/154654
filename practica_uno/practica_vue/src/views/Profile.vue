@@ -3,7 +3,10 @@
 
     <div class="p">
       <div class="row">
-        <div style="width:100%;"> <button class="btn back">BACK</button><br></div>
+
+        <div style="width:100%;">
+          <router-link :to="{name:'main'}"> <button class="btn back">BACK</button></router-link><br>
+        </div>
         <div class="col-lg-5 mt">
           <ProfileForm class="login-form"></ProfileForm>
         </div>

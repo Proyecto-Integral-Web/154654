@@ -13,7 +13,10 @@
           style="background-color:#000; min-height:400px;"
         >
           <ProfileFormMain></ProfileFormMain>
-          <Partidas class="mt"></Partidas>
+          <Partidas
+            class="mt"
+            style="background-color:transparent"
+          ></Partidas>
         </div>
       </div>
     </div>
@@ -24,7 +27,7 @@
 import ProfileFormMain from '@/components/ProfileFormMain'
 import Partidas from '@/components/MainForm'
 export default {
-  name: 'ProfileMain',
+  name: 'Profile',
   components: {
     ProfileFormMain,
     Partidas
