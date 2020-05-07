@@ -16,7 +16,7 @@
         >
           <h3>RECORD</h3>
           <Ronda></Ronda>
-          <button class="btn btn-create">CREATE NEW</button>
+          <button class="btn btn-create-new">CREATE NEW</button>
         </div>
       </div>
     </div>

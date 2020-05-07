@@ -69,12 +69,12 @@ strong:hover {
 .log-out:hover {
   color: black;
 }
-.btn-create {
+.btn-create-new {
   border: 1px solid yellow;
   border-radius: 0%;
   color: yellow;
 }
-.btn-create:hover {
+.btn-create-new:hover {
   border: 1px solid white;
   background-color: rgba(1, 1, 1, 0.2);
   color: white;

@@ -69,7 +69,10 @@ const routes = [
   {
     path: '/main',
     name: 'main',
-    component: Main
+    component: Main,
+    meta: {
+      auth: true // Se utiliza para controlar
+    }
   }
 ]
 
