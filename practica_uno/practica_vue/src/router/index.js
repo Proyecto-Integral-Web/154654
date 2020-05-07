@@ -6,6 +6,7 @@ import SignUp from '../views/SignUp.vue'
 import Partida from '../views/Juego/Partida.vue'
 import Marcador from '../views/Juego/Marcador.vue'
 import Partidas from '../views/Juego/Partidas.vue'
+import Main from '../views/Main.vue'
 
 Vue.use(VueRouter)
 
@@ -64,6 +65,11 @@ const routes = [
     path: '/marcador',
     name: 'marcador',
     component: Marcador
+  },
+  {
+    path: '/main',
+    name: 'main',
+    component: Main
   }
 ]
 
