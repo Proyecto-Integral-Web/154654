@@ -5,41 +5,8 @@
         <div class="col-lg-4">
           <ProfileForm class="login-form"></ProfileForm>
         </div>
-        <div class="col-lg-8 d-none d-lg-block">
-          <Ronda class=""></Ronda>
-          <!--<div class="content">
-            <img
-              style="width: 200px; height: 200px;"
-              src="../assets/1.jpg"
-              class="rounded float-left img-fluid m-3"
-            >
-            <img
-              style="width: 200px; height: 200px;"
-              src="../assets/2.jpg"
-              class="rounded  img-fluid m-3"
-            >
-            <img
-              style="width: 200px; height: 200px;"
-              src="../assets/3.jpg"
-              class="rounded float-left img-fluid m-3"
-            >
-            <img
-              style="width: 200px; height: 200px;"
-              src="../assets/4.jpg"
-              class="rounded float-left img-fluid m-3"
-            >
-            <img
-              style="width: 200px; height: 200px;"
-              src="../assets/5.jpg"
-              class="rounded float-left img-fluid m-3"
-            >
-            <img
-              style="width: 200px; height: 200px;"
-              src="../assets/6.png"
-              class="rounded float-left img-fluid m-3"
-            >
-
-          </div>-->
+        <div class="col-lg-8 d-none">
+          <Ronda></Ronda>
         </div>
       </div>
     </div>
@@ -57,17 +24,13 @@ export default {
   },
   methods: {
 
+  },
+  beforeCreate: function () {
+    document.body.className = 'profile'
   }
 
 }
 </script>
 
 <style lang="scss">
-.content {
-  height: 100%;
-  border-radius: 0px !important;
-  background-size: cover;
-  border-left: 1px solid gainsboro !important;
-  text-align: center;
-}
 </style>

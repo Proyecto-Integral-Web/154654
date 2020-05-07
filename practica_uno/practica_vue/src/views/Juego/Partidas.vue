@@ -107,7 +107,7 @@ export default {
 }
 </script>
 <style lang="scss">
-.datos {
+/*.datos {
   background-color: #eb7b7e;
   border-radius: 5px;
 }
@@ -206,5 +206,5 @@ export default {
 .tab-main #tab1:checked ~ #content1,
 .tab-main #tab2:checked ~ #content2 {
   display: block;
-}
+}*/
 </style>

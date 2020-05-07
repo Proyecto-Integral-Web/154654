@@ -40,17 +40,4 @@ export default {
 }
 </script>
 <style lang="scss">
-.title {
-  color: white;
-  font-family: montserrat !important;
-}
-.marcador {
-  background-image: url(../../assets/fr1.jpg);
-}
-.btn-black {
-  color: white !important;
-}
-b {
-  color: white;
-}
 </style>

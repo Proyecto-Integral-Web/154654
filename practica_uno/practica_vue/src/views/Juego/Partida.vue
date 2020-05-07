@@ -170,13 +170,4 @@ export default {
 }
 </script>
 <style lang="scss">
-.partida {
-  background-image: url(../../assets/vg3.jpg);
-}
-.btn-black {
-  color: white !important;
-}
-b {
-  color: white;
-}
 </style>

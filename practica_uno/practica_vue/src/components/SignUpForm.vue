@@ -53,7 +53,11 @@ export default {
       console.log('soy el signup')
       console.log(this.user.email)
 
-      Auth.signUp(this.user).catch(errores => {
+      Auth.signUp(this.user).then(data => {
+        data.user.updateProfile({
+          displayName: this.user.name
+        }).then(() => {})
+      }).catch(errores => {
         this.showError = true
         this.errorMessage = errores.message
         this.errorCode = errores.code

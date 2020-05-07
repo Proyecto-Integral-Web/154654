@@ -1,0 +1,10 @@
+.tarjetas {
+  background: white;
+  border-radius: 20px;
+  color: white;
+  font-family: Lexend Giga;
+  border: solid #ffbc1f 10px;
+}
+.ronda {
+  color: black;
+}

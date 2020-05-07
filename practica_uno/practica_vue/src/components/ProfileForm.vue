@@ -1,71 +1,4 @@
-<template>
-  <section>
-    <alerts-component
-      v-if="showError"
-      :message="errorMessage"
-      :code="errorCode"
-    ></alerts-component>
-    <div class="col">
-      <img
-        class="img-fluid w-50 h-50 m-3"
-        :src="user.photo"
-      >
-      <div class="col mb-3">
-        <a class="subtitle text-center">
-          <h6 class="title">{{user.name}}</h6>
-        </a>
-      </div>
-      <input
-        type="text"
-        name="name"
-        class="form-control mb-3"
-        placeholder="hola"
-        v-model="user.name"
-      >
-
-      <input
-        type="email"
-        name="email"
-        class="form-control mb-3"
-        placeholder="E-mail"
-        v-model="user.email"
-      >
-      <input
-        type="text"
-        v-model="user.photo"
-        class="form-control mb-2 text-center"
-      >
-
-    </div>
-    <div class="form-group mb-3">
-      <div class="row">
-      </div>
-    </div>
-    <div class="form-group mb-2">
-      <div class="row">
-        <div class="col">
-
-        </div>
-
-      </div>
-    </div>
-    <div class="form-group mb-2">
-      <div class="row">
-        <div class="col">
-          <button
-            class="btn btn_success btn-block log-out"
-            @click="logOut"
-          ><small><strong>Log Out</strong></small></button>
-          <button
-            class="btn btn_success btn-block log-out"
-            @click="updateInfo"
-          ><small><strong>Update</strong></small></button>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
+<template src="./recursos/html/ProfileForm.html">
 </template>
 
 <script lang="js">
@@ -136,26 +69,5 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 //Style, ubicamos el css relacionado a nuestros views y componentes
 <style lang="scss">
-strong {
-  color: gray !important;
-  &:hover {
-    color: black !important;
-  }
-}
-.title {
-  font-family: montserrat !important;
-}
-.subtitle {
-  font-size: 10pt !important;
-  font-family: montserrat !important;
-  text-align: center !important;
-}
-.log-out {
-  color: gray !important;
-  font-family: montserrat !important;
-  font-weight: bolder !important;
-  &:hover {
-    color: black !important;
-  }
-}
+@import "./recursos/css/profile.css";
 </style>
