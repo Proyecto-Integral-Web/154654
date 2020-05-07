@@ -1,12 +1,19 @@
 <template>
   <div class="profile container">
+
     <div class="p">
       <div class="row">
-        <div class="col-lg-4">
+        <div style="width:100%;"> <button class="btn back">BACK</button><br></div>
+        <div class="col-lg-5 mt">
           <ProfileForm class="login-form"></ProfileForm>
         </div>
-        <div class="col-lg-8 d-none">
+        <div
+          class="col-lg-7 pt mt"
+          style="background-color:#344093"
+        >
+          <h3>RECORD</h3>
           <Ronda></Ronda>
+          <button class="btn btn-create">CREATE NEW</button>
         </div>
       </div>
     </div>

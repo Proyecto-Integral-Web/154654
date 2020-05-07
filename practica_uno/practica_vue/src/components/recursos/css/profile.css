@@ -5,13 +5,23 @@ h4 {
   font-weight: bolder;
   color: #344093;
 }
+button.back {
+  color: yellow;
+  font-weight: bolder;
+  float: left;
+}
+button.back:hover {
+  color: white;
+}
 .small {
   font-weight: bold;
   font-size: 9pt;
   float: left;
   text-align: left;
 }
-
+h3 {
+  font-weight: bolder;
+}
 .content {
   height: 100%;
   border-radius: 0px !important;
@@ -58,4 +68,14 @@ strong:hover {
 }
 .log-out:hover {
   color: black;
+}
+.btn-create {
+  border: 1px solid yellow;
+  border-radius: 0%;
+  color: yellow;
+}
+.btn-create:hover {
+  border: 1px solid white;
+  background-color: rgba(1, 1, 1, 0.2);
+  color: white;
 }

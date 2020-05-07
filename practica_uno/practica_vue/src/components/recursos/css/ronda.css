@@ -1,10 +1,23 @@
 .tarjetas {
-  background: white;
+  background: transparent;
   border-radius: 20px;
-  color: white;
+
   font-family: Lexend Giga;
-  border: solid #ffbc1f 10px;
+  border-radius: 0%;
+  border: 0px;
+  padding: 20px;
+}
+h3 {
+  color: white;
+  font-weight: bolder;
+}
+.pt {
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+.mt {
+  margin-top: 50px;
 }
 .ronda {
-  color: black;
+  color: white;
 }
