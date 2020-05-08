@@ -1,29 +1,42 @@
 <template>
   <section>
-    <div class="partida h-100 p-5 m-5">
-      <div class="row">
-        <div class="col ">
-          <button
-            class="btn btn-black"
-            @click="crearPartida"
-          >
+    <img
+      class="logoflotante"
+      src="../../assets/KACHIPU-07.png"
+    >
+    <div class="logogame">
+      <ProfileFormMain></ProfileFormMain>
+      <img
+        class="logogameimg"
+        src="../../assets/KACHIPU-12.png"
+      >
+    </div>
+    <div class="p-5">
+
+      <div class="row row-fluid">
+        <div class="col ml-3">
+          <button class="btn btn-new-partidas">
             Nueva Partida
           </button>
         </div>
-      </div>
-      <div class="row row-fluid">
-        <div class="col col-sm-6 offset-3">
+        <div class="col mr-3">
+          <div class="contadores">
+            <h5>0/0</h5>
+          </div>
         </div>
       </div>
       <!--<h3>{{$route.params.no_partida.replace('-',' ')}}</h3>-->
-      <div class="row">
+      <div class="row m-3">
 
-        <div class="col col-sm-12 col-lg-6 p-2">
-          <user-arena></user-arena>
+        <div class="col col-sm-12 col-lg-8 p-2 bg-light">
+          <UserPruebas></UserPruebas>
         </div>
-        <div class="col col-sm-12 col-lg-6 p-2">
+        <div
+          class="col col-sm-12 col-lg-4 p-2"
+          style="background-color:black;"
+        >
 
-          <user-arena></user-arena>
+          <UserPruebas></UserPruebas>
           <button>
             👾
           </button>
@@ -34,10 +47,20 @@
   </section>
 </template>
 <script lang="js">
+import UserPruebas from '@/components/Juego/UserPruebas'
+import ProfileFormMain from '@/components/ProfileFormMain'
 export default {
-  name: 'Pruebas'
+  name: 'Partidas',
+  components: {
+    UserPruebas,
+    ProfileFormMain
+  },
+  beforeCreate: function () {
+    document.body.className = 'game'
+  }
 }
 </script>
 
 <style lang="scss">
+@import "./../../components/recursos/css/game.css";
 </style>

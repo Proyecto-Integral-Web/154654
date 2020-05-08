@@ -13,10 +13,10 @@
           style="background-color:#000; min-height:400px;"
         >
           <ProfileFormMain></ProfileFormMain>
-          <Partidas
+          <Partida
             class="mt"
             style="background-color:transparent"
-          ></Partidas>
+          ></Partida>
         </div>
       </div>
     </div>
@@ -25,20 +25,16 @@
 
 <script lang="js">
 import ProfileFormMain from '@/components/ProfileFormMain'
-import Partidas from '@/components/MainForm'
+import Partida from '@/components/MainForm'
 export default {
-  name: 'Profile',
+  name: 'Main',
   components: {
     ProfileFormMain,
-    Partidas
-  },
-  methods: {
-
+    Partida
   },
   beforeCreate: function () {
     document.body.className = 'main'
   }
-
 }
 </script>
 

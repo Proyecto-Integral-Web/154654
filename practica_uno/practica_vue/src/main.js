@@ -14,6 +14,9 @@ Vue.use(firestorePlugin) // agregamos bootstrap
 
 Vue.config.productionTip = false
 
+/* firebase.onAuthStateChanged(user => {
+  store.dispatch('setUser', user)
+}) */
 // Metodo de comprobacion de permiso de acceso
 
 router.beforeEach(async (to, from, next) => {

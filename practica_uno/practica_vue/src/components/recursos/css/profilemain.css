@@ -1,5 +1,5 @@
 body.main {
-  background-image: url(../../../assets/KACHIPU-30.png);
+  background-image: url(../../../assets/KACHIPU-30.png) !important;
 }
 div.left {
   height: auto;

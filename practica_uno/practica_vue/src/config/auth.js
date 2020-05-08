@@ -36,7 +36,7 @@ export default {
         }
         router.push({ name: 'main' })
 
-        fireApp.auth().updateCurrentUser(newUser).catch(err => console.table(err))
+        result.user.updateProfile(newUser).catch(err => console.log(err))
       }).catch((err) => {
         console.table(err)
         return Promise.reject(err)
