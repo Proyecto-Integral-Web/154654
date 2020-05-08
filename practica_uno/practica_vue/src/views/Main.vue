@@ -20,7 +20,6 @@
             class="mt"
             style="background-color:transparent"
           ></Partida>
-          <PartidaComponent></PartidaComponent>
         </div>
       </div>
     </div>
@@ -31,7 +30,6 @@
 
 import { mapGetters } from 'vuex'
 import ProfileFormMain from '@/components/ProfileFormMain'
-import PartidaComponent from '@/components/PartidaComponent'
 import Partida from '@/components/MainForm'
 import fireApp from '@/config/_firebase.js'
 import Auth from '@/config/auth'
@@ -39,8 +37,7 @@ export default {
   name: 'Main',
   components: {
     ProfileFormMain,
-    Partida,
-    PartidaComponent
+    Partida
   },
   beforeCreate: function () {
     document.body.className = 'main'
