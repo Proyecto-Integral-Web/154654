@@ -27,15 +27,30 @@
 </template>
 
 <script lang="js">
+import { mapGetters } from 'vuex'
 import LoginForm from '@/components/LoginForm'
 export default {
   name: 'login',
+  beforeRouteEnter (to, from, next) {
+    next(vm => {
+      vm.$store.dispatch('setUser')
+    })
+  },
+  mounted () {
+    if (this.user) {
+      this.$router.push({ name: 'partidas' })
+    }
+  },
   components: {
     LoginForm
+  },
+  computed: {
+    ...mapGetters({ user: 'getUser' })
   },
   beforeCreate: function () {
     document.body.className = 'login'
   }
+
 }
 </script>
 

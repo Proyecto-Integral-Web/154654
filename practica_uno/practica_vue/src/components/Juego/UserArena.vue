@@ -26,10 +26,10 @@
         </div>
       </div>
     </div>
-
   </section>
 </template>
 <script lang="js">
+import { mapGetters } from 'vuex'
 export default {
   name: 'UserArena',
   props: ['userOpcion', 'displayName'],
@@ -46,6 +46,11 @@ export default {
     select (key) {
       this.$emit('opcion', key)
     }
+  },
+  computed: {
+    ...mapGetters({
+      user: 'getUser' // ? Mapeamos nuestros getter registrados y los transformamos en una varible (data) para ser utlizado en nuestro componente
+    })
   }
 }
 </script>

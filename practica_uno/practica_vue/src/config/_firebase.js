@@ -1,4 +1,9 @@
-import * as firebase from 'firebase'
+// import * as firebase from 'firebase'
+
+import firebase from 'firebase/app'
+import 'firebase/firestore'
+import 'firebase/auth'
+import 'firebase/storage'
 
 const firebaseConfig = {
   apiKey: 'AIzaSyDocBUG1JNo3yH377vsKVi7NWgpERTXqMY',
@@ -11,6 +16,13 @@ const firebaseConfig = {
   measurementId: 'G-G9WYDNJV57'
 }
 
-var fireApp = firebase.initializeApp(firebaseConfig)
+// var fireApp = firebase.initializeApp(firebaseConfig)
 
-export default fireApp
+// export default fireApp
+
+var fireApp = firebase.initializeApp(firebaseConfig)
+var db = fireApp.firestore()
+var auth = fireApp.auth()
+var storage = fireApp.storage()
+const { Timestamp } = fireApp.firestore
+export { db, auth, storage, Timestamp }

@@ -28,12 +28,13 @@
 </template>
 
 <script lang="js">
+
+import { mapGetters } from 'vuex'
 import ProfileFormMain from '@/components/ProfileFormMain'
 import PartidaComponent from '@/components/PartidaComponent'
 import Partida from '@/components/MainForm'
 import fireApp from '@/config/_firebase.js'
 import Auth from '@/config/auth'
-
 export default {
   name: 'Main',
   components: {
@@ -46,6 +47,9 @@ export default {
   },
   mounted () {
     this.user = Auth.getUser()
+  },
+  computed: {
+    ...mapGetters({ user: 'getUser' })
   },
   methods: {
     crearPartida () {
