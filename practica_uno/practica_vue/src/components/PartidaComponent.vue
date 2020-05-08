@@ -67,10 +67,10 @@
 
 <script lang="js">
 import UserArena from '@/components/Juego/UserArena'
-import fireApp from '../config/_firebase.js'
+import { db } from '../config/_firebase.js'
 import Auth from '@/config/auth'
 import ProfileFormMain from '@/components/ProfileFormMain'
-const partidas = fireApp.firestore().collection('kachipu')
+const partidas = db.collection('kachipu')
 export default {
   name: 'Partida',
   props: ['usuario_opcion'],
@@ -101,7 +101,7 @@ export default {
 
   firestore: {
     // partidas: fireApp.firestore().collection('juego-1')
-    partidas: fireApp.firestore().collection('kachipu')
+    partidas: partidas
   },
   // Helper para asignar objetos o variables que necesitan ser detectados en sus cambios para ejecutar metodos
   watch: {
@@ -134,7 +134,7 @@ export default {
       this.user = Auth.getUser()
       let uid = this.user.uid
       // Escribe en la base de datos
-      fireApp.firestore().collection('kachipu').add({
+      partidas.add({
         participantes: [uid],
         name: [this.user.displayName == null ? 'Usuario' : this.user.displayName],
         'usuario_1': ' ',
@@ -162,7 +162,7 @@ export default {
       // Escribe en la base de datos
       this.partida.name.push(this.user.displayName == null ? 'Usuario' : this.user.displayName)
       this.partida.participantes.push(this.user.uid)
-      fireApp.firestore().collection('kachipu').doc(this.$route.params.no_partida).update(this.partida)
+      partidas.doc(this.$route.params.no_partida).update(this.partida)
     },
     getOpcion (opcion) {
       let participantes = this.partida.participantes
@@ -179,7 +179,7 @@ export default {
           }
         }
       }
-      fireApp.firestore().collection('kachipu').doc(this.$route.params.no_partida).update(data).then((result) => {
+      partidas.doc(this.$route.params.no_partida).update(data).then((result) => {
         if (this.partida.usuario_1 !== '' && this.partida.usuario_2 !== '') {
           this.ganar()
         }
