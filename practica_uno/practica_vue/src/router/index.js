@@ -27,7 +27,7 @@ const routes = [
     component: SignUp // Declaramos componente
   },
   {
-    path: '/',
+    path: '/home',
     name: 'home',
     component: Home
   },
@@ -59,8 +59,8 @@ const routes = [
       auth: true
     },
     children: [{
-      path: 'no_partida',
-      name: 'partida',
+      path: ':no_partida',
+      name: 'userarena',
       component: UserArena,
       meta: {
         auth: true

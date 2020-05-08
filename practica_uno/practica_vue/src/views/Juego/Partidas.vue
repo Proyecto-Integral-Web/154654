@@ -12,10 +12,13 @@
       >
     </div>
     <div class="p-5">
-
+      <h1 class="tituloJuego">{{$route.params.no_partida.replace('-',' ')}}</h1>
       <div class="row row-fluid">
         <div class="col ml-3">
-          <button class="btn btn-new-partidas">
+          <button
+            class="btn btn-new-partidas"
+            @click="crearPartida"
+          >
             Nueva Partida
           </button>
         </div>

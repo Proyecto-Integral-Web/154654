@@ -3,7 +3,7 @@ import App from './App.vue'
 import './registerServiceWorker'
 import router from './router'
 import store from './store'
-import Auth from './config/auth'
+import { auth } from './config/_firebase'
 import 'animate.css'
 /**/
 import { firestorePlugin } from 'vuefire'
@@ -14,27 +14,25 @@ Vue.use(firestorePlugin) // agregamos bootstrap
 
 Vue.config.productionTip = false
 
-/* firebase.onAuthStateChanged(user => {
+auth.onAuthStateChanged(user => {
   store.dispatch('setUser', user)
-}) */
+})
 // Metodo de comprobacion de permiso de acceso
 
-router.beforeEach(async (to, from, next) => {
+router.beforeEach((to, from, next) => {
   if (to.meta.auth) {
     console.log('Necesita permiso para entrar')
     // Traemos info del usuario actual
-    let user = await Auth.checkUser()
-    console.log(user)
+    let user = store.state.user.user
     // Comprobamos que si haya usuario
-    if (user == null) {
-      // Si no hay usuario lo mandamos al login
+    if (!store.state.user.logged) {
       next({
         name: 'login'
       })
       return
     }
     // Si hay usuario ingresamos a la ruta
-    console.log('Usuario logeado')
+    console.log(`Usuario logeado : ${user.email}`, store.state.user.logged)
     next()
   }
   next()

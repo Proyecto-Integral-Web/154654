@@ -15,7 +15,7 @@
             <div class="row">
               <div
                 class="col col-sm-4 opcion p-3"
-                v-for="(option, key) in options"
+                v-for="(option,key ) in opciones"
                 :key="key"
                 @click="select(key)"
               >
@@ -35,40 +35,19 @@ export default {
   props: ['userOpcion', 'displayName'],
   data () {
     return {
-      options: {
-        t: '✂️',
-        pp: '🧻',
-        p: '💎'
+      opciones: {
+        piedra: '🤛',
+        papel: '✋',
+        tijeras: '✌️'
       }
     }
   },
   methods: {
     select (key) {
-      this.$emit('opcion', [key, this.displayName])
+      this.$emit('opcion', key)
     }
   }
 }
 </script>
 <style lang="scss">
-.tarjetas {
-  background: white;
-  border-radius: 20px;
-  color: white;
-  font-family: Lexend Giga;
-  border: solid #ffbc1f 10px;
-  .usuario {
-    color: black;
-    font-weight: bold;
-  }
-}
-.opciones {
-  background: transparent;
-  border: solid #ffbc1f 1px;
-  .opcion {
-    cursor: pointer;
-    &:hover {
-      background: #ffbc1f;
-    }
-  }
-}
 </style>

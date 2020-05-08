@@ -2,13 +2,13 @@
   <section>
     <img
       class="logoflotante"
-      src="../../assets/KACHIPU-07.png"
+      src="./../assets/KACHIPU-07.png"
     >
     <div class="logogame">
       <ProfileFormMain></ProfileFormMain>
       <img
         class="logogameimg"
-        src="../../assets/KACHIPU-12.png"
+        src="./../assets/KACHIPU-12.png"
       >
     </div>
 
@@ -67,7 +67,7 @@
 
 <script lang="js">
 import UserArena from '@/components/Juego/UserArena'
-import fireApp from '../../config/_firebase.js'
+import fireApp from '../config/_firebase.js'
 import Auth from '@/config/auth'
 import ProfileFormMain from '@/components/ProfileFormMain'
 const partidas = fireApp.firestore().collection('kachipu')
@@ -265,5 +265,5 @@ export default {
 </script>
 
 <style lang="scss">
-@import "./../../components/recursos/css/game.css";
+@import "./recursos/css/game.css";
 </style>

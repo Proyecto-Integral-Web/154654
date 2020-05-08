@@ -12,7 +12,15 @@
     <router-view />
   </div>
 </template>
-
+<script lang="js">
+import { mapGetters } from 'vuex'
+export default {
+  name: 'App',
+  computed: {
+    ...mapGetters({ logged: 'logged' })
+  }
+}
+</script>
 <style lang="scss">
 #app {
   font-family: "montserrat";
