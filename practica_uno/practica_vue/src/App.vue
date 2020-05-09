@@ -1,13 +1,13 @@
 <template>
   <div id="app">
     <div id="nav">
-      <router-link to="/">Home</router-link> |
+      <router-link to="/profile">Profile</router-link> |
       <router-link
         :to="{
         name:'about'}"
         :class="$route.name=='about'?'btn':''"
       >About</router-link> |
-      <router-link to="/juego-1/AtrIjZa1tF6QKJYPKXtM">Juego</router-link>
+      <router-link to="/main">Main</router-link>
     </div>
     <router-view />
   </div>
@@ -37,10 +37,10 @@ export default {
 
   a {
     font-weight: bold;
-    color: #000000;
+    color: yellow;
 
     &.router-link-exact-active {
-      color: #113b28;
+      color: white;
     }
   }
 }

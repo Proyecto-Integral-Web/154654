@@ -2,8 +2,9 @@
 </template>
 
 <script lang="js">
+import { mapGetters } from 'vuex'
 import Auth from '@/config/auth.js'
-import Firebase from '@/config/_firebase.js'
+import { db } from '@/config/_firebase.js'
 import AlertsComponent from '@/components/helpers/Alerts'
 
 export default {
@@ -27,7 +28,7 @@ export default {
     console.log('Estoy en created')
     // var user = Auth.currentUser
     // this.name = user.displayName
-    let usuario = Firebase.auth().currentUser
+    let usuario = db.auth().currentUser
     this.user.name = usuario.displayName
     this.user.email = usuario.email
     this.user.photo = usuario.photoURL
@@ -46,7 +47,7 @@ export default {
       Auth.login(this.usuario)
     },
     updateInfo () {
-      let usuarioAcual = Firebase.auth().currentUser
+      let usuarioAcual = db.auth().currentUser
 
       usuarioAcual.updateProfile({
         displayName: this.user.name,
@@ -62,6 +63,11 @@ export default {
         this.errorCode = err.code
       })
     }
+  },
+  computed: {
+    ...mapGetters({
+      user: 'getUser' // ? Mapeamos nuestros getter registrados y los transformamos en una varible (data) para ser utlizado en nuestro componente
+    })
   }
 }
 </script>

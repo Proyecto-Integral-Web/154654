@@ -31,8 +31,9 @@
 import { mapGetters } from 'vuex'
 import ProfileFormMain from '@/components/ProfileFormMain'
 import Partida from '@/components/MainForm'
-import fireApp from '@/config/_firebase.js'
+import { db } from '@/config/_firebase.js'
 import Auth from '@/config/auth'
+const partidas = db.collection('partidas')
 export default {
   name: 'Main',
   components: {
@@ -53,7 +54,7 @@ export default {
       this.user = Auth.getUser()
       let uid = this.user.uid
       // Escribe en la base de datos
-      fireApp.firestore().collection('kachipu').add({
+      partidas.add({
         participantes: [uid],
         name: [this.user.displayName == null ? 'Usuario' : this.user.displayName],
         'usuario_1': ' ',

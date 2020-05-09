@@ -4,7 +4,7 @@
 
 <script lang="js">
 import Auth from '@/config/auth.js'
-import Firebase from '@/config/_firebase.js'
+import { db } from '@/config/_firebase.js'
 import Partidas from '@/views/Juego/Partidas'
 export default {
   name: 'partidas',
@@ -23,7 +23,7 @@ export default {
     }
   },
   mounted () {
-    let userC = Firebase.auth().currentUser
+    let userC = db.auth().currentUser
     this.user.nombre = userC.displayName
     this.user.photo = userC.photoURL
   },

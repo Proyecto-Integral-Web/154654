@@ -5,7 +5,8 @@
 <script lang="js">
 import Auth from '@/config/auth.js'
 import AlertsComponent from './helpers/Alerts'
-import Firebase from '@/config/_firebase.js'
+import { db } from '@/config/_firebase.js'
+
 export default {
   name: 'SignUpForm',
   components: {
@@ -34,7 +35,7 @@ export default {
   },
   methods: { // declarar todas las funciones que se van a usar, en este caso Login
     updateProfile () {
-      let userU = Firebase.auth().currentUser
+      let userU = db.auth().currentUser
 
       userU.updateProfile({
         displayName: this.user.name
@@ -63,7 +64,7 @@ export default {
         this.errorCode = errores.code
       })
       setTimeout(() => {
-        let userU = Firebase.auth().currentUser
+        let userU = db.auth().currentUser
 
         userU.updateProfile({
           displayName: this.user.name
