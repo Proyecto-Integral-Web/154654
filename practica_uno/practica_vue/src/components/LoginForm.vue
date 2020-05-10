@@ -15,11 +15,9 @@ export default {
       errorMessage: '',
       errorCode: '',
       user: {
-        email: '',
-        password: ''
-      },
-      userEmail: {
-        userPassword: ''
+        email: 'ejemplo@mail.com',
+        password: '',
+        nombre: 'Prueba nombre'
       }
     }
   },

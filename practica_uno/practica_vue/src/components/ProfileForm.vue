@@ -12,7 +12,9 @@ export default {
   component: { AlertsComponent },
   data () { // iteramos todas las variables y métodos que
     return {
-      usuario: Auth.checkUser(),
+
+      userData: {}
+      /* usuario: Auth.checkUser(),
       showError: false,
       errorMessage: '',
       errorCode: '',
@@ -21,21 +23,22 @@ export default {
         name: '',
         email: '',
         photo: ''
-      }
+      } */
     }
   },
   created () {
     console.log('Estoy en created')
     // var user = Auth.currentUser
     // this.name = user.displayName
-    let usuario = db.auth().currentUser
+    /* let usuario = db.auth().currentUser
     this.user.name = usuario.displayName
     this.user.email = usuario.email
-    this.user.photo = usuario.photoURL
+    this.user.photo = usuario.photoURL */
   },
   mounted () { // el lugar adecuado para ejecutar cualquier funcion preparatoria, como para checar si el usuario esta loggeado, la ubicación, etc.
     console.log('Estoy en mounted')
-    this.usuario = Auth.checkUser()
+    // this.usuario = Auth.checkUser()
+    this.getUser()
     // this.login()
   },
   methods: {
@@ -46,13 +49,16 @@ export default {
     login () {
       Auth.login(this.usuario)
     },
+    getUser () {
+      this.userData = Auth.getUser()
+    },
     updateInfo () {
       let usuarioAcual = db.auth().currentUser
 
       usuarioAcual.updateProfile({
-        displayName: this.user.name,
+        displayName: this.user.displayName,
         email: this.user.email,
-        photoURL: this.user.photo
+        photoURL: this.user.photoURL
       }).then((result) => {
         console.log(result)
         return alert('Update')

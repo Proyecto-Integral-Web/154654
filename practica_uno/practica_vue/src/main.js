@@ -16,6 +16,11 @@ Vue.config.productionTip = false
 
 auth.onAuthStateChanged(user => {
   store.dispatch('setUser', user)
+  if (user) {
+    router.push({ name: 'partidas' }).catch(err => console.log(err))
+  } else {
+    router.push({ name: 'login' }).catch(err => console.log(err))
+  }
 })
 // Metodo de comprobacion de permiso de acceso
 

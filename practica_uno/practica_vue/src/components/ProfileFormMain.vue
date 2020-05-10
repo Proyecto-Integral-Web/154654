@@ -11,7 +11,8 @@ export default {
   component: { AlertsComponent },
   data () { // iteramos todas las variables y métodos que
     return {
-      usuario: Auth.checkUser(),
+      userData: {}
+      /* usuario: Auth.checkUser(),
       showError: false,
       errorMessage: '',
       errorCode: '',
@@ -21,6 +22,7 @@ export default {
         email: '',
         photo: ''
       }
+    } */
     }
   },
   created () {
@@ -34,13 +36,17 @@ export default {
   },
   mounted () { // el lugar adecuado para ejecutar cualquier funcion preparatoria, como para checar si el usuario esta loggeado, la ubicación, etc.
     console.log('Estoy en mounted')
-    this.usuario = Auth.checkUser()
+    // this.usuario = Auth.checkUser()
     // this.login()
+    this.getUser()
   },
   methods: {
     name: 'profileMain',
     profile () {
       this.$router.push({ name: 'Profile' })
+    },
+    getUser () {
+      this.userData = Auth.getUser()
     }
   },
   computed: {

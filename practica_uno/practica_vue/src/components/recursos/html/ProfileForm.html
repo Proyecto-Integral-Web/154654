@@ -1,7 +1,8 @@
 <section class="section">
 
   <a class="subtitle text-center">
-    <h6 class="title">Hello {{user.name}}</h6>
+    <h6 class="title">Hello {{user&&user.displayName?user.displayName:'Sin Nombre'}}</h6>
+    <img :src="user.photoURL" />
   </a>
   <h4>EDIT PROFILE</h4>
     <alerts-component v-if="showError" :message="errorMessage" :code="errorCode"></alerts-component>
@@ -9,11 +10,11 @@
       <img class="img-fluid w-50 h-50 m-3" :src="user.photo">
       <br>
       <small class="small">Name:</small>
-      <input class="form-control mb-2" name="name" type="text" placeholder="Name" v-model="user.name">
+      <input class="form-control mb-2" name="name" type="text" placeholder="Name" v-model="user.displayName">
 
       <!--<input class="form-control mb-3" name="email" type="email" placeholder="E-mail" v-model="user.email">-->
       <small class="small">Url Picture:</small>
-      <input placeholder="Ex: http://pic.com" class="form-control mb-2 " type="text" v-model="user.photo">
+      <input placeholder="Ex: http://pic.com" class="form-control mb-2 " type="text" v-model="user.photoURL">
 
     </div>
     <div class="form-group mb-3">

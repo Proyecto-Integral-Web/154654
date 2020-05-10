@@ -1,9 +1,10 @@
 <section>
   <div class="col">
-    <img class="img-fluid mb-2" :src="user.photo"
+    <img class="img-fluid mb-2" :src="user.photoURL"
       style="height: 100px;">
     <a class="subtitle text-center">
-      <h6 class="title text-light">Hello {{user.name}}</h6>
+      <h6 class="title text-light">Hello {{user&&user.displayName?user.displayName:'Sin Nombre'}}</h6>
+      {{user&&user.email?user.email:'Sin Correo'}}
     </a>
   </div>
   <router-link :to="{name:'profile'}">

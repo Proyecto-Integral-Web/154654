@@ -1,6 +1,9 @@
 <template>
   <div id="app">
-    <div id="nav">
+    <div
+      id="nav"
+      v-if="logged"
+    >
       <router-link to="/profile">Profile</router-link> |
       <router-link
         :to="{
