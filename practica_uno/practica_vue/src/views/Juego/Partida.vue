@@ -34,7 +34,7 @@
         <div class="col col-sm-12 col-lg-8 p-2 bg-light">
           <user-arena
             @opcion="getOpcion"
-            :userOpcion="(partida.participantes[0] === user.uid) ? partida.usuario_1:(partida.usuario_1 && partida.usuario_2)?partida.usuario_1:''"
+            :userOpcion="partida.usuario_2!=''||(partida.participantes[0] === user.uid) ? partida.usuario_1:(partida.usuario_1 && partida.usuario_2)?partida.usuario_1:''"
             :displayName="!user.displayName?partida.name[0]!== user.displayName?partida.name[0]:'':user.displayName"
           ></user-arena>
         </div>
@@ -50,7 +50,7 @@
         >
           <user-arena
             @opcion="getOpcion"
-            :userOpcion="(partida.participantes[1] === this.user.uid) ? partida.usuario_2:(partida.usuario_2 && partida.usuario_2)?partida.usuario_2:''"
+            :userOpcion="partida.usuario_1!=''||(partida.participantes[1] === user.uid) ? partida.usuario_2:(partida.usuario_1 && partida.usuario_2)?partida.usuario_2:''"
             :displayName="!partida.name[1]?'Esperando Retador':partida.name[1]"
           ></user-arena>
           <button
@@ -74,7 +74,7 @@ import Auth from '@/config/auth'
 import ProfileFormMain from '@/components/ProfileFormMain'
 const partidas = db.collection('kachipu')
 export default {
-  name: 'Partida',
+  name: 'partidas',
   props: ['usuario_opcion'],
   components: {
     UserArena,
@@ -91,6 +91,12 @@ export default {
   beforeRouteEnter (to, from, next) {
     // next(async vm => {
     next(vm => {
+      /* vm.obtenerPartida(to.params.no_partida)
+      // vm.user = await Auth.getUser()
+      vm.$bind('user', Auth.getUser())
+      vm.user = vm.obtenerUser()
+      vm.$bind('partida', partida.doc(to.params.no_partida)) */
+      // vm.user = Auth.getUser()
       vm.$bind('partida', partidas.doc(to.params.no_partida))
     })
   },
@@ -169,7 +175,7 @@ export default {
       // Escribe en la base de datos
       this.partida.name.push(this.user.displayName == null ? 'Usuario' : this.user.displayName)
       this.partida.participantes.push(this.user.uid)
-      partidas.doc(this.$route.params.no_partida).update(this.partida)
+      db.firestore().collection('kachipu').doc(this.$route.params.no_partida).update(this.partida)
     },
     getOpcion (opcion) {
       let participantes = this.partida.participantes
@@ -186,7 +192,7 @@ export default {
           }
         }
       }
-      partidas.doc(this.$route.params.no_partida).update(data).then((result) => {
+      db.firestore().collection('kachipu').doc(this.$route.params.no_partida).update(data).then((result) => {
         if (this.partida.usuario_1 !== '' && this.partida.usuario_2 !== '') {
           this.ganar()
         }

@@ -1,6 +1,9 @@
 body.login {
   background-image: url('../../../assets/KACHIPU-22.png') !important;
 }
+.login {
+  padding-top: 50px;
+}
 strong {
   color: white;
 }

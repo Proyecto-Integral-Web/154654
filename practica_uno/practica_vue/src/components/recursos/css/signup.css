@@ -1,6 +1,9 @@
 body.signup {
   background-image: url('../../../assets/KACHIPU-23.png') !important;
 }
+.signup {
+  padding-top: 50px;
+}
 strong {
   color: white;
 }

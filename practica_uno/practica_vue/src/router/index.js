@@ -53,14 +53,14 @@ const routes = [
   {
     // rutas dinamicas, donde no_partida puede ser diferente para cargar dicha partida
     path: '/kachipu/',
-    name: 'partida', // asignamos nombre, debe ser único y original
+    name: 'partidas', // asignamos nombre, debe ser único y original
     component: Partida,
     meta: {
       auth: true
     },
     children: [{
       path: ':no_partida',
-      name: 'userarena',
+      name: 'partida',
       component: UserArena,
       meta: {
         auth: true
@@ -70,7 +70,7 @@ const routes = [
   {
     // rutas dinamicas, donde no_partida puede ser diferente para cargar dicha partida
     path: '/partidas',
-    name: 'partidas', // asignamos nombre, debe ser único y original
+    name: 'partidas2', // asignamos nombre, debe ser único y original
     component: Partidas // Declaramos componente
   },
   {
