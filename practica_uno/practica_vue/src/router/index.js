@@ -69,7 +69,7 @@ const routes = [
   },
   {
     // rutas dinamicas, donde no_partida puede ser diferente para cargar dicha partida
-    path: '/partidas',
+    path: '/partidas2',
     name: 'partidas2', // asignamos nombre, debe ser único y original
     component: Partidas // Declaramos componente
   },

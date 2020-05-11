@@ -32,11 +32,11 @@
       <!--<h3>{{$route.params.no_partida.replace('-',' ')}}</h3>-->
       <div class="row m-3">
         <div class="col col-sm-12 col-lg-8 p-2 bg-light">
-          <user-arena
+          <UserArena
             @opcion="getOpcion"
             :userOpcion="partida.usuario_2!=''||(partida.participantes[0] === user.uid) ? partida.usuario_1:(partida.usuario_1 && partida.usuario_2)?partida.usuario_1:''"
             :displayName="!user.displayName?partida.name[0]!== user.displayName?partida.name[0]:'':user.displayName"
-          ></user-arena>
+          ></UserArena>
         </div>
         <div
           v-if="partida.completed"
@@ -48,11 +48,11 @@
           class="col col-sm-12 col-lg-4 p-2"
           style="background-color:black;"
         >
-          <user-arena
+          <UserArena
             @opcion="getOpcion"
             :userOpcion="partida.usuario_1!=''||(partida.participantes[1] === user.uid) ? partida.usuario_2:(partida.usuario_1 && partida.usuario_2)?partida.usuario_2:''"
             :displayName="!partida.name[1]?'Esperando Retador':partida.name[1]"
-          ></user-arena>
+          ></UserArena>
           <button
             v-if="!partida.name[1]"
             class="btn"
@@ -67,23 +67,17 @@
 
 <script lang="js">
 import { db } from '../../config/_firebase.js'
-import { mapGetters } from 'vuex'
 import UserArena from '@/components/Juego/UserArena'
 
 import Auth from '@/config/auth'
 import ProfileFormMain from '@/components/ProfileFormMain'
 const partidas = db.collection('kachipu')
 export default {
-  name: 'partidas',
+  name: 'partida',
   props: ['usuario_opcion'],
   components: {
     UserArena,
     ProfileFormMain
-  },
-  computed: {
-    ...mapGetters({
-      user: 'getUser'
-    })
   },
   beforeCreate: function () {
     document.body.className = 'game'
@@ -91,12 +85,6 @@ export default {
   beforeRouteEnter (to, from, next) {
     // next(async vm => {
     next(vm => {
-      /* vm.obtenerPartida(to.params.no_partida)
-      // vm.user = await Auth.getUser()
-      vm.$bind('user', Auth.getUser())
-      vm.user = vm.obtenerUser()
-      vm.$bind('partida', partida.doc(to.params.no_partida)) */
-      // vm.user = Auth.getUser()
       vm.$bind('partida', partidas.doc(to.params.no_partida))
     })
   },
@@ -107,15 +95,10 @@ export default {
   data () {
     return {
       partida: {},
-      partidas: [],
       user: {}
     }
   },
 
-  firestore: {
-    // partidas: fireApp.firestore().collection('juego-1')
-    partidas: partidas
-  },
   // Helper para asignar objetos o variables que necesitan ser detectados en sus cambios para ejecutar metodos
   watch: {
     '$route.params': {
@@ -158,12 +141,6 @@ export default {
     },
     // Cargar los datos de la partifda del firestore
     obtenerPartida () {
-      /* fireApp.firestore().collection('juego-1').doc(this.partida).get().then((result) => {
-        console.log(result.data())
-      })
-      fireApp.firestore().collection('juego-1').where('participantes', '==', this.user.uid).get().then((result) => {
-        console.log('Hay partidas')
-      }) */
       partidas.doc(this.partida).get().then((result) => {
         console.log(result.data())
       })
@@ -175,7 +152,7 @@ export default {
       // Escribe en la base de datos
       this.partida.name.push(this.user.displayName == null ? 'Usuario' : this.user.displayName)
       this.partida.participantes.push(this.user.uid)
-      db.firestore().collection('kachipu').doc(this.$route.params.no_partida).update(this.partida)
+      partidas.doc(this.$route.params.no_partida).update(this.partida)
     },
     getOpcion (opcion) {
       let participantes = this.partida.participantes
@@ -192,7 +169,7 @@ export default {
           }
         }
       }
-      db.firestore().collection('kachipu').doc(this.$route.params.no_partida).update(data).then((result) => {
+      partidas.doc(this.$route.params.no_partida).update(data).then((result) => {
         if (this.partida.usuario_1 !== '' && this.partida.usuario_2 !== '') {
           this.ganar()
         }
