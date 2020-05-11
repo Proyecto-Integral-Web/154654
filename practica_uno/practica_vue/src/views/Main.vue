@@ -33,7 +33,7 @@ import ProfileFormMain from '@/components/ProfileFormMain'
 import Partida from '@/components/MainForm'
 import { db } from '@/config/_firebase.js'
 import Auth from '@/config/auth'
-const partidas = db.collection('partidas')
+const partidas = db.collection('kachipu')
 export default {
   name: 'Main',
   components: {
@@ -56,7 +56,7 @@ export default {
       // Escribe en la base de datos
       partidas.add({
         participantes: [uid],
-        name: [this.user.displayName == null ? 'Usuario' : this.user.displayName],
+        names: [this.user.displayName == null ? 'Usuario 1' : this.user.displayName],
         'usuario_1': ' ',
         'usuario_2': ' ',
         'ganador': ' ',

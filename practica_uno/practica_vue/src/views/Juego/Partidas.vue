@@ -57,10 +57,8 @@ export default {
   components: {
     UserPruebas,
     ProfileFormMain
-  },
-  beforeCreate: function () {
-    document.body.className = 'game'
   }
+
 }
 </script>
 

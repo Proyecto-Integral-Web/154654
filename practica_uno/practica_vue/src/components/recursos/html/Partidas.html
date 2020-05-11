@@ -1,16 +1,74 @@
 <section class="section">
-<div class="col columnaDer">
+  <div class="col columnaDer">
     <div class="tab-main mx-auto columnaDer">
-        <input id="tab1" type="radio" name="tabs" checked>
-        <label for="tab1">Partidas propias</label>
-        <input id="tab2" type="radio" name="tabs">
-        <label for="tab2">Partidas disponibles</label>
-        <section id="content1">
-            <Partidas></Partidas>
-        </section>
-        <section id="content2">
-            <label>asdasd</label>
-        </section>
+      <input id="tab1" type="radio" name="tabs" checked />
+      <label for="tab1">Partidas propias</label>
+      <input id="tab2" type="radio" name="tabs" />
+      <label for="tab2">Partidas disponibles</label>
+      <section id="content1">
+        <ul class="list-group">
+          <li
+            v-for="partida in partidasSort"
+            :key="partida.id"
+            class="list-group-item "
+          >
+            <div class="row">
+              <div class="col">
+                <h3 class="animated infinite pulse">🏆</h3>
+              </div>
+              <div class="col">
+                <h4 v-if="partida.participantes.includes(user.uid)">⭐</h4>
+              </div>
+              <div
+                v-if="partida.usuario_1==='' || partida.usuario_2===''"
+                class="col"
+              >
+                <h4
+                  class="animated infinite pulse"
+                  v-if="partida.usuario_1==='' && partida.participantes.indexOf(user.uid) === 0"
+                >
+                  ⏰
+                </h4>
+                <h4
+                  class="animated infinite pulse"
+                  v-if="partida.usuario_2==='' && partida.participantes.indexOf(user.uid) === 1"
+                >
+                  ⏰
+                </h4>
+              </div>
+              <div v-if="partida.usuario_1===''" class="col">
+                <h4 class="animated infinite pulse">1️⃣</h4>
+              </div>
+              <div v-if="partida.usuario_2===''" class="col">
+                <h4 class="animated infinite pulse">2️⃣</h4>
+              </div>
+            </div>
+            <h4>{{partida.ganador_text}}</h4>
+            <br />
+            <strong>Player 1: </strong> {{partida.names[0]}}
+            <br />
+            <strong>Player 2: </strong> {{partida.names[1]?partida.names[1]:'Sin
+            Retador'}}
+            <br />
+            <strong>Creada:</strong>
+            {{moment(partida.created_at.toDate()).format('LLL')}}
+            <br />
+            <div class="btn-group">
+              <button
+                class="btn mb-2 btn-outline-info btn-sm animated infinite"
+                :class="partida.names.length===1?'pulse':''"
+                @click="$router.push({name:'partida',params:{no_partida:partida.id}}).catch(err => {})"
+              >
+                {{partida.participantes.length===1&&!partida.participantes.includes(user.uid)
+                ?'Retar':'Ver'}}
+              </button>
+            </div>
+          </li>
+        </ul>
+      </section>
+      <section id="content2">
+        <label>asdasd</label>
+      </section>
     </div>
-</div>
+  </div>
 </section>

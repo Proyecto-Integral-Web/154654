@@ -4,7 +4,7 @@
 <script lang="js">
 import { mapGetters } from 'vuex'
 import Auth from '@/config/auth.js'
-import { db } from '@/config/_firebase.js'
+// import { db } from '@/config/_firebase.js'
 import AlertsComponent from '@/components/helpers/Alerts'
 
 export default {
@@ -53,15 +53,15 @@ export default {
       this.userData = Auth.getUser()
     },
     updateInfo () {
-      let usuarioAcual = db.auth().currentUser
+      // let usuarioAcual = db.auth().currentUser
 
-      usuarioAcual.updateProfile({
+      this.userData.updateProfile({
         displayName: this.user.displayName,
         email: this.user.email,
         photoURL: this.user.photoURL
       }).then((result) => {
         console.log(result)
-        return alert('Update')
+        // return alert('Update')
       }).catch((err) => {
         console.table(err)
         this.showError = true

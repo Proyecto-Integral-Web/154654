@@ -5,6 +5,7 @@
       v-if="logged"
     >
       <router-link to="/profile">Profile</router-link> |
+      <router-link to="/kachipu/7j1JbuSKPWGj6oGVlNlb">Juego</router-link> |
       <router-link
         :to="{
         name:'about'}"

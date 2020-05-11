@@ -5,7 +5,7 @@ export default {
     commit('SET_LOGGED_IN', user !== null) // ? Si es diferente a null entonces esta iniciada la sesión.
     if (user) {
       commit('SET_USER', user) // ? Le agreagmos los datos a nuestro state en una mutación (./mutations)
-      router.push({ name: 'profile' }).catch(err => console.log(err))
+      router.push({ name: 'main' }).catch(err => console.log(err))
     } else {
       commit('SET_USER', null)
       commit('SET_LOGGED_IN', false)
