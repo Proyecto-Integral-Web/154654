@@ -1,5 +1,11 @@
 body.main {
-  background-image: url(../../../assets/KACHIPU-30.png) !important;
+  background-image: url(../../../assets/KACHIPU-22.png) !important;
+}
+section.profilemain {
+  background-color: white;
+  width: auto;
+  height: auto;
+  padding: 15px;
 }
 div.left {
   height: auto;
@@ -12,8 +18,8 @@ div.contenedor {
 }
 div.new {
   width: 100%;
-  height: 250px;
-  max-height: 350px;
+  height: 200px;
+  max-height: 250px;
   background-image: url(../../../assets/logo.png);
   background-size: contain;
   background-position: center top;
@@ -31,14 +37,33 @@ button.btn-create:hover {
   border: 2px solid black;
   color: black;
 }
-button.btn-edit {
+button.editar {
   padding: 0;
   border: 0px !important;
+  font-size: 7pt;
+  color: gray !important;
+}
+button.editar:hover {
+  color: black !important;
+}
+.titleprofile {
+  color: black;
+  font-size: 10pt;
+  font-weight: bold;
+}
+.correo {
   font-size: 8pt;
+  color: black;
 }
-button.btn-edit:hover {
-  color: #344093;
+.imagenperfil {
+  height: 85px;
+  width: 85px;
+  border-radius: 50%;
+  box-shadow: 0px 0px 15px gainsboro;
+  overflow: hidden;
+  background-color: white;
+  margin-bottom: 10px;
 }
-h6 {
-  color: white;
+.imagenperfil img {
+  height: 100%;
 }

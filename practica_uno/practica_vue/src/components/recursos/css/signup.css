@@ -1,9 +1,6 @@
 body.signup {
   background-image: url('../../../assets/KACHIPU-23.png') !important;
 }
-.signup {
-  padding-top: 50px;
-}
 strong {
   color: white;
 }
@@ -22,7 +19,7 @@ table.signup {
 }
 .login-form {
   width: 100%;
-  padding: 80px;
+  padding: 30px;
 }
 td {
   color: white;

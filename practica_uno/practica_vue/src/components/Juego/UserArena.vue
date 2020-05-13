@@ -7,7 +7,7 @@
         </div>
         <div class="row">
           <div class="col-3 mx-auto">
-            <h1>{{options[userOpcion]}}</h1>
+            <h1>{{opciones[userOpcion]}}</h1>
           </div>
         </div>
         <div class="row">

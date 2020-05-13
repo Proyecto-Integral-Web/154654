@@ -8,14 +8,14 @@
           name="tabs"
           checked
         />
-        <label for="tab1">Partidas propias</label>
+        <label for="tab1">PROPIAS</label>
         <input
           id="tab2"
           type="radio"
           name="tabs"
         />
 
-        <label for="tab2">Partidas disponibles</label>
+        <label for="tab2">disponibles</label>
         <section id="content1">
           <ul class="list-group">
             <li

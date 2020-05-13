@@ -41,15 +41,16 @@ body.game {
 }
 .usuario {
   color: #344093;
+  font-size: 12pt;
   font-weight: bold;
 }
 .opciones {
   background: transparent;
-  border: solid yellow 1px;
 }
 .opciones:hover {
-  background: whitesmoke;
+  cursor: pointer;
 }
 .opcion:hover {
   background-color: yellow !important;
+  border-radius: 50%;
 }

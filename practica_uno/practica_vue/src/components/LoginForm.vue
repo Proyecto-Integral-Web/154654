@@ -1,4 +1,96 @@
-<template src="./recursos/html/LoginForm.html"></template>
+<template>
+  <section class="formulario">
+    <h3 class="title">WANNA<br><strong>PLAY?</strong></h3>
+
+    <div class="col mb-3">
+      <a class="subtitle text-center text-light">
+
+      </a>
+    </div>
+    <div class="col">
+      <small class="text-light">Name:</small>
+      <input
+        class="form-control mb-3"
+        name="email"
+        type="email"
+        placeholder="E-mail"
+        v-model="user.email"
+        @keypress="showError=false"
+      >
+      <small class="text-light">Password</small>
+      <input
+        class="form-control mb-3"
+        name="password"
+        type="password"
+        placeholder="********"
+        v-model="user.password"
+        @keypress.enter="login"
+        @keypress="showError=false"
+      >
+
+      <!-- Handler templating -->
+      <!--{{user.password}}-->
+      <!--{{1+1}}-->
+
+    </div>
+    <div class="form-group mb-3">
+      <div class="row">
+        <!-- <div class="col">
+          <div class="row">
+            <div class="col-md-2">
+              <input type="checkbox" />
+            </div>
+            <div class="col">
+              <small>Remember me</small>
+            </div>
+          </div>
+
+        </div>-->
+        <!--<div class="col">
+          <small>Forgot password?</small>
+        </div>-->
+      </div>
+    </div>
+    <div class="form-group mb-2">
+      <!--<div
+        class="alert alert-danger"
+        role="alert"
+        id="alert-error"
+      >
+        <strong></strong> <a
+          href="#"
+          class="alert-link"
+        >E-mail or password are incorrect </a> Try again.
+      </div>-->
+      <AlertsComponent
+        v-if="showError"
+        :message="errorMessage"
+        :code="errorCode"
+      >
+      </AlertsComponent>
+      <div class="row">
+        <div class="col">
+          <button
+            class="btn btn_success btn-block btn-black btn-dark"
+            @click="login"
+          >Login</button>
+        </div>
+
+      </div>
+    </div>
+    <div class="col subtitle">
+
+    </div>
+    <div class="col">
+      <button
+        class="btn btn-gray sign-up"
+        @click="signup"
+      ><small>Don't have an account?</small></button>
+
+    </div>
+
+  </section>
+</template>
 
 <script lang="js">
 import Auth from '@/config/auth.js'
@@ -15,9 +107,9 @@ export default {
       errorMessage: '',
       errorCode: '',
       user: {
-        email: 'ejemplo@mail.com',
+        email: '',
         password: '',
-        nombre: 'Prueba nombre'
+        nombre: ''
       }
     }
   },
@@ -46,13 +138,6 @@ export default {
         this.errorMessage = error.message
         this.errorCode = error.code
       })
-      /* setTimeout(() => {
-        // Luego de iniciar sesion nos envia a la pagina about
-        this.$router.push({ name: 'about' })
-      }, 1000) */
-      /* setTimeout(() => {
-        this.showError = false
-      }, 700) */
     },
     signup () {
       console.log('signup')

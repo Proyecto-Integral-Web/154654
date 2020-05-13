@@ -30,8 +30,11 @@
         </div>
       </div>
       <!--<h3>{{$route.params.no_partida.replace('-',' ')}}</h3>-->
-      <div class="row m-3">
-        <div class="col col-sm-12 col-lg-8 p-2 bg-light">
+      <div class="row">
+        <div
+          class="col col-sm-12 col-lg-6"
+          style="background-color: white;"
+        >
           <UserArena
             @opcion="getOpcion"
             :userOpcion="partida.usuario_2!=''||(partida.participantes[0] === user.uid) ? partida.usuario_1:(partida.usuario_1 && partida.usuario_2)?partida.usuario_1:''"
@@ -45,8 +48,8 @@
           <div class="text-center">{{partida.ganador_nombre}}</div>
         </div>
         <div
-          class="col col-sm-12 col-lg-4 p-2"
-          style="background-color:black;"
+          class="col col-sm-12 col-lg-6"
+          style="background-color: gainsboro;;"
         >
           <UserArena
             @opcion="getOpcion"
@@ -58,6 +61,7 @@
             class="btn"
             @click="retar"
           >💰</button>
+
         </div>
       </div>
       <b>{{partida}}</b>
@@ -74,7 +78,7 @@ import ProfileFormMain from '@/components/ProfileFormMain'
 const partidas = db.collection('kachipu')
 export default {
   name: 'partida',
-  props: ['usuario_opcion'],
+  props: ['userOpcion'],
   components: {
     UserArena,
     ProfileFormMain

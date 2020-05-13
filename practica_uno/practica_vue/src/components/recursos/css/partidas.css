@@ -7,21 +7,21 @@
   display: none;
 }
 .tab-main section {
-  margin: 20px;
+  margin: 10px;
 }
 .tab-main input {
   display: none;
 }
 
 .tab-main label {
+  margin-top: 20px;
   display: inline-block;
-  margin-left: 10px;
-  margin-right: 10px;
+  margin-left: 5px;
   text-align: lenpmft;
   color: #344093;
   letter-spacing: 1px;
   background: bottom;
-  font-size: 13pt;
+  font-size: 9pt;
   font-weight: bolder;
   text-transform: uppercase;
 }
@@ -38,7 +38,7 @@
 .tab-main input:checked + label {
   color: yellow;
   border-bottom: 2px solid;
-  font-size: 13pt;
+  font-size: 9pt;
   font-weight: bolder;
   text-transform: uppercase;
 }
